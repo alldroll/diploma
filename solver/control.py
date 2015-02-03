@@ -9,11 +9,8 @@ class Omega(object):
     self.low = low
     self.high = high
 
-  def contains(self, x):
-    return int(x >= self.low and x <= self.high)
-
 def chi(omega, x):
-  return omega.contains(x)
+  return int(x >= omega.low and x <= omega.high)
 
 def pm(m, u, x1, x2):
   l = x2 - x1
