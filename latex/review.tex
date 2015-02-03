@@ -1,4 +1,53 @@
 \section{Обзор}
 \vspace{1em}
 
-лалала)
+\subsection{Стационарное решение}
+
+\begin{equation}
+  u_t = u_{xx} - uu_x  
+\end{equation}
+
+Пусть u не зависит от $t$, тогда 
+
+\begin{equation}
+  u_{xx} = uu_x
+\end{equation}
+
+Обозначим $u_x = p$, $u_{xx} = pp_u$, получаем, $u = p_u$ и тогда
+
+\begin{equation}
+  2u_x = u^2 + C_0
+\end{equation}
+
+Предлагаем $u_x \neq 0$ и $C_0 = -a^2 < 0$, тогда $dx = \frac{du}{u^2 - a^2}$
+
+\begin{equation}
+  ax = \ln{C_1 |\frac{a - u}{a + u}|}
+\end{equation}
+
+где $C_1 = |\frac{a + u(0)}{a - u(0)}|$\\
+Если в добавок, $|u| < a$, т.е.($u_x < 0$), тогда
+
+\begin{equation}
+  u = a \frac{C_1 - \exp{ax}}{C_1 + \exp{ax}} = -a \tanh{\frac{a}{2}(x - \frac{2}{a} \arctanh{\frac{u(0)}{a}})}   
+\end{equation} 
+
+Если  $|u| > a$, т.е.($0 < 2u_x < u^2$), тогда
+
+\begin{equation}
+  u = a \frac{C_1 + \exp{ax}}{C_1 - \exp{ax}} = -a \coth{\frac{a}{2}(x - \frac{2}{a} \arccoth{\frac{u(0)}{a}})}   
+\end{equation} 
+
+Теперь пусть $C_0 = a^2 > 0$, тогда $dx = \frac{du}{u^2 + a^2}$
+
+\begin{equation}
+  \frac{ax}{2} = \arctan{u}{a} + C_1
+\end{equation}
+
+, где $C_1 = -\arctan{u(0}}{a}$, отсюда 
+
+\begin{equation}
+  u = a \tan{\frac{ax}{2} + C_1} = -a \cot{\frac{a}{2}(x - \frac{2}{a} \arccot{\frac{u(0)}{a}})}
+\end{equation}
+
+Теперь $C_0 = 0$, если $u_x = 0$, тогда $u = const$. 
