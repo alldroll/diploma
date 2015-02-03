@@ -1,0 +1,60 @@
+\documentclass[a4paper,14pt]{article}
+\usepackage{extsizes}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{amssymb,amsfonts,amsmath,mathtext,cite,enumerate,float}
+% \usepackage[dvips]{graphicx}
+\usepackage{graphicx}
+\usepackage{sectsty}
+\usepackage{array}
+\usepackage{amsthm}
+\usepackage{titlesec}
+\usepackage{indentfirst}
+\usepackage{xr}
+\usepackage{subfigure}
+\usepackage[round, sort, numbers]{natbib}
+\usepackage{url}
+\usepackage{setspace}
+
+\setcitestyle{square}
+\graphicspath{{images/}}
+
+\allsectionsfont{\centering}
+
+\makeatletter
+% \renewcommand{\@biblabel}[1]{#1.}
+\makeatother
+
+\usepackage{geometry}
+\geometry{left=2.5cm}
+\geometry{right=1.5cm}
+\geometry{top=2cm}
+\geometry{bottom=2cm}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\isum}[2][j]{\sum \limits_{#1=1}^{\infty}{#2}}
+\newcommand{\operator}[1]{\mathcal{R}{#1}}
+\newcommand{\supp}{\mathop{\mathrm{supp}}}
+
+
+\newcommand{\sectionbreak}{\clearpage}
+
+\numberwithin{equation}{section}
+\begin{document}
+
+\input{project_title}
+\renewcommand{\contentsname}{Содержание}
+\tableofcontents
+\onehalfspacing
+\begin{onehalfspace}
+  \input {review}
+	% \input{introduction}
+	% \input{par_stability}
+	% \input{theory}
+	% \input{experiment}
+	% \input{conclusion}
+	% \input{literature}
+\end{onehalfspace}
+
+\end{document} 

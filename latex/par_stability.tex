@@ -1,0 +1,57 @@
+\section{Анализ устойчивости линейного параболического уравнения}
+Рассмотрим параболическое уравнение \\*
+\begin{equation}\label{dif_form}
+u_t = u_{xx} + \alpha u, \quad 0 < x < 1, \quad t > 0
+\end{equation}
+с начальным и граничными условиями:
+\begin{gather}\label{d_control}
+u(0, t) = u(1, t) = 0, \\*
+u(x, 0) = u_{0}(x) \in L^2(0, 1). \nonumber
+\end{gather}
+Здесь и далее через $u_t$, $u_x$, $u_xx$ .. обозначаются соотвествующие частные производные функции $u$.\\
+Умножим уравнение \eqref{dif_form} на $u$ скалярно в $L^2(0, 1)$,\\*
+\begin{equation*}
+(u_t, u) = (u_{xx}, u) + \alpha (u, u).
+\end{equation*}
+Скалярное произведение в $L^2(0, 1)$ определяется как $(u, v) = \int_0^1 uv dx$, а норма как $\norm{u} = \sqrt{(u, u)}$.\\
+Получаем 
+\begin{equation}\label{int_form}
+\frac{1}{2}\frac{d}{dt}\norm{u}^2 = -\norm{u_x}^2 + \alpha \norm{u}^2.
+\end{equation}
+
+
+C помощью неравенства Пуанкаре–Фридрихса-Стеклова
+\begin{equation*}
+\norm{u}^2 \le \frac{1}{\pi^2} \norm{u_x}^2.
+\end{equation*}
+получаем следующую оценку 
+\begin{equation}\label{stable_opr}
+\frac{1}{2}\frac{d}{dt}\norm{u}^2 \le (\alpha - \pi^2)\norm{u}^2.
+\end{equation}
+Рассмотрим 3 случая
+
+\begin{enumerate}
+\item $\alpha = \pi^2$. Тогда из \eqref{stable_opr} следует неравенство
+\begin{equation}
+	\norm{u}^2 \le \norm{u_0}^2.
+\end{equation}
+Указанное неравенство означает, что нулевое решение задачи \eqref{dif_form} - \eqref{d_control} устойчиво по Ляпунову, но не устойчиво ассимптотически
+\item $\alpha < \pi^2$. Обозначим $\frac{\mu}{2} = -(\alpha - \pi^2)$.\\
+Тогда
+\begin{equation}\label{less_pi2}
+	\frac{d}{dt}\norm{u}^2 + \mu \norm{u}^2 \le 0
+\end{equation}
+Домножим обе части \eqref{less_pi2} на $e^{\mu t}$. Тогда, $\frac{d(\norm{u}^2 e^{\mu t})}{dt} \le 0$. Проинтегрируем и в итоге получим
+\begin{equation*}
+	\norm{u}^2 \le \norm{u_0}^2 e^{-\mu t} = \norm{u_0}^2 e^{2(\alpha - \pi^2) t}
+\end{equation*}
+Полученная оценка гарантирует ассимптитическую экспоненциальную устойчивость.
+\item $\alpha > \pi^2$. Решение начально краевой задачи \eqref{dif_form} - \eqref{d_control} имеет вид
+\begin{equation}
+	u(x, t) = 2 \isum{a_j e^{(\alpha - \pi^2 j^2)t}\sin{\pi j x}}
+\end{equation}
+Здесь $a_j = \int_0^1{u_0 \sin{\pi j s} ds}$. Первый член суммы указывает на темп роста решения при $t \rightarrow \infty$. Следовательно, система неустойчива.
+\end{enumerate}
+
+
+Для стабилизации системы \eqref{int_form} в случае 3, будем использовать ниже описанный метод.\\
