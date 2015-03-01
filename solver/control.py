@@ -5,12 +5,17 @@ import math
 
 class Omega(object):
   """docstring for Omega"""
-  def __init__(self, low, high):
-    self.low = low
-    self.high = high
+  def __init__(self, intervals):
+    self.intervals = intervals
 
 def chi(omega, x):
-  return int(x >= omega.low and x <= omega.high)
+  success = False
+  for interval in omega.intervals:
+    success = (x >= interval[0] and x <= interval[1])
+    if success: 
+      print "%f in [%f, %f]" % (x, interval[0], interval[1])
+      break
+  return success
 
 def pm(m, u, x1, x2):
   l = x2 - x1

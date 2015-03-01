@@ -1,25 +1,39 @@
 #/usr/bin/python
 
-import pde
 from mpl_toolkits.mplot3d import Axes3D
 from matplotlib import cm
 from matplotlib.ticker import LinearLocator, FormatStrFormatter
 import matplotlib.pyplot as plt
 import numpy as np
 
-def draw(f, name, text = ''):
+def draw_surface(f, name, x1, x2, dx, t1, t2, dt):
   fig = plt.figure(name)
   ax = fig.gca(projection='3d')
-  x = np.arange(pde.x1, pde.x2 + pde.dx, pde.dx)
-  t = np.arange(pde.t1, pde.t2 + pde.dt, pde.dt)
+  x = np.arange(x1, x2 + dx, dx)
+  t = np.arange(t1, t2 + dt, dt)
+
   x, t = np.meshgrid(x, t)
 
-  surf = ax.plot_surface(x, t, f, rstride=1, cstride=1, cmap=cm.coolwarm,
+  ax.plot_surface(x, t, f, rstride=1, cstride=1, cmap=cm.coolwarm,
           linewidth=0, antialiased=False)
 
-  xLabel = ax.set_xlabel('x', linespacing=3.2)
-  yLabel = ax.set_ylabel('t', linespacing=3.1)
-  zLabel = ax.set_zlabel('u', linespacing=3.4)
+  ax.set_xlabel('x', linespacing=3.2)
+  ax.set_ylabel('t', linespacing=3.1)
+  ax.set_zlabel('u', linespacing=3.4)
+
+def draw_subplots(name, x, fn):
+  fig = plt.figure(name)
+  for f in fn:
+    ax = fig.add_subplot(111)
+    ax.plot(x, f)
+
+  x1, x2, y1, y2 = plt.axis()
+  a = 0#(x2 - x1) / 8
+  b = 0#(y2 - y1) / 8
+  plt.axis((x1 - a, x2 + a, y1 - b, y2 + b)) 
+  plt.xticks(np.arange(x1, x2, 2))
+
+  #fig.savefig('images/%s.png' % name) 
 
 
 def show():

@@ -1,48 +1,47 @@
 #/usr/bin/python
 
-
-from integration import *
+from solver import *
 from draw import *
-from control import *
-from pde import *
 
-def solve(om, r, p, alpha):
-  g = dt / (dx ** 2)
-  b = [(1. + 2 * g - alpha * dt)] * (n + 1)
-  a = [-g] * (n + 1)
-  c = [-g] * (n + 1)
-
-  u = [[0. for x in range(n + 1)] for x in xrange(m + 1)]
-
-  for i in range(n + 1):
-    u[0][i] = yt0(x1 + i * dx)
-
-  d = lambda i, j : u[j - 1][i] + dt * f(x1 + i * dx, t1 + j * dt) - r * chi(om, x1 + i * dx) * pm(p, u[j - 1], x1, x2)
-
-  for j in range(1, m + 1):
-    al, be = [0.] * n, [0.] * n
-    be[0] = yx0(t1 + j * dt)
-
-    for i in range(1, n):
-      g = b[i] + c[i] * al[i - 1]
-      al[i] = - a[i] / g
-      be[i] = (d(i, j) - c[i] * be[i - 1]) / g
-
-    u[j][n] = yxl(t1 + j * dt)
-
-    for i in range(n - 1, -1, -1):
-      u[j][i] = al[i] * u[j][i + 1] + be[i]
-
-  return u
 
 def main():
 
-  u = solve(Omega(0., 0.4), 1, 1, alpha)
-  e = solve(Omega(0., 0.0), 0, 0, alpha)
+  ##linear heat equation stabilization 
+  # u = implicit_heat_equation(Omega(0., 0.4), 1, 1, alpha)
+  # e = implicit_heat_equation(Omega(0., 0.0), 0, 0, alpha)
+  # draw_surface(e, 'exactly', x1, x2, dx, t1, t2, dt)  
+  # draw_surface(u, 'repaired', x1, x2, dx, t1, t2, dt)
 
-  draw(e, 'exactly', '')  
-  draw(u, 'repaired', '$\omega = [0, 0.1], r = 1.0$')
+  ##shock-like solutions
+  # x = np.arange(0, 1, 0.01)
+  # draw_subplots('static', x, [[us(3, i) for i in x], [us(8, i) for i in x], [us(15, i) for i in x]])
+
+  ##reaction coeff
+  # x = np.arange(0, 1, 0.01)
+  # draw_subplots('fig2', x, [[reac_term(4, i) for i in x], [reac_term(10, i) for i in x]]) 
+
+  ##show on chosed time several plots
+  # x = np.arange(x1, x2 + dx, dx)
+  # draw_subplots('', x, [[c[m][i] for i in range(n + 1)], [c[100][i] for i in range(n + 1)], [c[400][i] for i in range(n + 1)]])
+
+  ##burger equation (fig.5)
+  
+  u = implicit_burger_equation()
+  # draw_surface(u, 'expl', x1, x2, dx, t1, t2, dt)
+
+  ##burger equation (fig.7)
+  #u = implicit_perturbation_burger_equation(Omega([[0, 2]]), 2, 1)
+  # draw_surface(u, 'impl', x1, x2, dx, t1, t2, dt)
+  
+  #x = np.arange(x1, x2 + dx, dx)
+
+  #draw_subplots('', x, [[1./2 * (dus(x1 + i * dx) + (us(x1 + i * dx)**2) / 2) for i in range(n + 1)]])
+  draw_surface(u, 'impl', x1, x2, dx, t1, t2, dt)
+
+  #draw_subplots('', x, [[0.5 * (dus(i * dx + x1) + us(i * dx + x1)**2 / 2) for i in range(n + 1)]])
   show()
+
+
 
 if __name__ == '__main__':
   main()
