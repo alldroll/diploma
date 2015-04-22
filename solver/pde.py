@@ -13,13 +13,13 @@ v = 1.0
 eps = 0.0001
 
 def alpha(x):
-  return np.pi**2 + 3
+  return sigma**2 * (2. / (np.cosh(sigma * (x - 0.5)))**2 - 1)#np.pi**2 + 3
 
 def U(sigma, x):
   return -2 * sigma * np.tanh(sigma * (x - 0.5)) 
 
 def us(x):
-  return U(3, x)
+  return U(sigma, x)
 
 def dus(x):
   return -2 * (sigma**2) * (1 - (np.tanh(sigma / 2)**2))

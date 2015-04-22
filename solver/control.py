@@ -13,7 +13,7 @@ def chi(omega, x):
   for interval in omega.intervals:
     success = (x >= interval[0] and x <= interval[1])
     if success: 
-      print "%f in [%f, %f]" % (x, interval[0], interval[1])
+      #print "%f in [%f, %f]" % (x, interval[0], interval[1])
       break
   return success
 

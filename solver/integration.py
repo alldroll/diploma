@@ -25,4 +25,4 @@ def integrate_sin(arr, a, b, j):
   return integrate(arr, a, b, j).imag
 
 def integrate_cos(arr, a, b, j):
-  return integrate(arr, a, b, j).real       
+  return integrate(arr, a, b, j).real
