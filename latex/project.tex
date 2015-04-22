@@ -1,7 +1,7 @@
 \documentclass[a4paper,14pt]{article}
 \usepackage{extsizes}
 \usepackage[T2A]{fontenc}
-\usepackage[utf8]{inputenc}
+\usepackage[utf8x]{inputenc}
 \usepackage[english,russian]{babel}
 \usepackage{amssymb,amsfonts,amsmath,mathtext,cite,enumerate,float}
 % \usepackage[dvips]{graphicx}
@@ -16,6 +16,8 @@
 \usepackage[round, sort, numbers]{natbib}
 \usepackage{url}
 \usepackage{setspace}
+\usepackage{pdfpages}
+
 
 \setcitestyle{square}
 \graphicspath{{images/}}
@@ -36,10 +38,11 @@
 \newcommand{\isum}[2][j]{\sum \limits_{#1=1}^{\infty}{#2}}
 \newcommand{\operator}[1]{\mathcal{R}{#1}}
 \newcommand{\supp}{\mathop{\mathrm{supp}}}
+\newtheorem{remark}{Замечание}
 
 \DeclareMathOperator\arctanh{arctanh}
 \DeclareMathOperator\arccoth{arccoth}
-\DeclareMathOperator\coth{coth}
+\DeclareMathOperator\arccot{arccot}
 
 
 \newcommand{\sectionbreak}{\clearpage}
@@ -47,18 +50,23 @@
 \numberwithin{equation}{section}
 \begin{document}
 
-\input{project_title}
+% \input{project_title}
+\includepdf[pages={1}]{titul.pdf}
 \renewcommand{\contentsname}{Содержание}
 \tableofcontents
+
 \onehalfspacing
 \begin{onehalfspace}
-  \input {review}
-	% \input{introduction}
-	% \input{par_stability}
-	% \input{theory}
-	% \input{experiment}
-	% \input{conclusion}
-	% \input{literature}
+	\input{introduction}
+	\input{par_stability}
+	\input{par_theory}
+    \input{num_implementation}
+	\input{par_examples}
+    \input{burger_stability}
+    \input{burger_examples}
+    \input{burger_theory}
+	\input{conclusion}
+    \input{literature}
 \end{onehalfspace}
 
 \end{document} 

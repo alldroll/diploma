@@ -1,0 +1,174 @@
+\section{Введение}
+
+Пусть
+
+\begin{equation}
+    \Omega = (0, 1), \quad \omega \subset \Omega
+\end{equation}
+
+Неустойчивое уравнение Бюргерса
+
+\begin{gather}
+    y_t - \nu y_{xx} + yy_x = f \\*
+    y|_{\partial \Omega} = y_{bi} \\*
+    y|_{t=0} = y_0
+\end{gather}
+
+Стационарное уравнение Бюргерса
+
+\begin{gather}
+    y_{sxx} + y_s y_{sx} = f_s \\*
+    y|_{s \partial \Omega} = y_{bi}
+\end{gather}
+
+\subsection{Задача стабилизации}
+Найти оператор управления с обратной связью $\Lambda$ такой, что решение задачи
+(1), где $f = f_s + \Lambda (y - y_s)$ экспоненциально сходится к $y_s$
+
+Обозначим за $\varphi = y - y_s$, тогда
+
+\begin{gather}
+    \varphi_t - \nu \varphi_{xx} + y_s \varphi_x + \varphi y_{sx} + \varphi
+    \varphi_x = \Lambda(\varphi) \\*
+    \varphi_0 = y_0 - y_s \\*
+    \varphi|_{\partial \Omega} = 0
+\end{gather}
+
+\subsection{Формализация}
+Здесь и далее
+\begin{equation}
+ H = L^2(\Omega), \quad V = H^1_0(\Omega), \quad \norm{z}^2 = \int_{\Omega}{z^2dx}
+\end{equation}
+
+\begin{equation}
+    V \subset H = H^{'} \subset V^{'} = H^{-1}(\Omega), (y, z) =
+\int_{\Omega}{yzdx}
+\end{equation}
+
+\begin{equation}
+    A: V \rightarrow V^{'}, (Ay, z) = (y_x, z_x)
+\end{equation}
+
+\begin{equation}
+    B: V \times V \rightarrow V^{'}, \quad (B(y, z), w) = (yz_x, w)
+\end{equation}
+
+\begin{equation}
+    A w_j = \lambda_j w_j, \quad j = 1, 2.. \quad \lambda_j \rightarrow +\infty
+\end{equation}
+
+\begin{equation}
+    \lambda_j = (\pi j)^2, \quad w_j(x) = \sqrt{2}\sin{(\pi j x)}
+\end{equation}
+
+Заметим что базис ортонормирован в $H$
+
+\begin{equation}
+    (w_j, w_k) = \delta_{jk}
+\end{equation}
+
+Введем следующие обозначения
+
+\begin{equation}
+    H_m = span{w_1, ..., w_m}, \quad P = P_m: H \rightarrow H_m, \quad Q=Q_m = I
+    - P
+\end{equation}
+
+\subsubsection{Неравенства}
+
+\begin{equation}
+    \lambda_1 \norm{v}^2 \le \norm{v_x}^2, \quad \norm{v}^4_{L^4} \le \norm{v}^2
+    \norm{v_x}^2
+\end{equation}
+
+\begin{equation}
+    |(B(y, z), w)| \le \norm{y}_{L^4} \norm{z_x} \norm{w}_{L^4} \le
+    \norm{y}^{1/2} \norm{y_x}^{1/2} \norm{z_x} \norm{w}^{1/2} \norm{w_x}^{1/2}
+\end{equation}
+
+\begin{equation}
+    \norm{w}^2 \le \lambda^{-1}_{m + 1} \norm{w_x}^2 \forall w \in V \cap
+    H_m^{\bot}
+\end{equation}
+
+\begin{equation}
+    |v(x)| \le \norm{v_x}, \quad |(B(y, z), w)| \le \norm{y_x} \norm{z_x}
+    \norm{w} \text{или} \norm{y} \norm{z_x} \norm{w_x}
+\end{equation}
+
+Оператор локально распределенного управления $\Lambda: H \rightarrow H$, \\
+\begin{equation}
+    \Lambda(\varphi) = -r \xi_{\omega}P\varphi
+\end{equation}
+
+
+Здесь \\
+$
+    \begin{matrix}
+    r & =
+    & \left\{
+    \begin{matrix}
+    r_0, & 2 \norm{Q\varphi} \le \norm{P\varphi}, \quad r_0 > 0, \\
+    0, & \mbox{иначе. }
+    \end{matrix} \right.
+    \end{matrix}
+$\\
+и \\
+$
+    \begin{matrix}
+    \chi_{\omega}(x) & =
+    & \left\{
+    \begin{matrix}
+    0, & \mbox{если } x \notin \omega, \\
+    1, & \mbox{иначе. }
+    \end{matrix} \right.
+    \end{matrix}
+$\\
+
+Перепишем задачу в следующем виде
+
+\begin{gather}
+    \varphi' + \nu A\varphi + B(\varphi, y_s) + B(y_s + \varphi, \varphi) =
+    \Gamma(\varphi), \quad t > 0 \\*
+    \varphi(0) = \varphi_0 = y_0 - y_s
+\end{gather}
+
+\subsection{Разрешимость задачи на конечном интервале времени}
+
+\newtheorem{theorem}{Теорема}
+
+\begin{theorem}
+Пусть $y_s \in H^1, \quad \varphi_0 \in H, \quad T > 0$. Тогда $\exists$ решение
+задачи $\varphi \in C([0, T], H) \cap L^2(0, T, V), \varphi' \in L^2(0, T, V')$
+\end{theorem}
+
+\begin{remark}
+Пусть $h(\lambda)$ единичная функция Хевисайда, \\
+$
+    \begin{matrix}
+    h(\lambda) & =
+    & \left\{
+    \begin{matrix}
+    1, & \lambda \ge 0 \\
+    0, & \lambda < 0
+    \end{matrix} \right.
+    \end{matrix}
+$\\
+
+, тогда оператор управления примит следующий вид
+
+\begin{equation}
+    \Lambda(\varphi) = -r_0 h(-2\norm{Q\varphi} +
+    \norm{P\varphi})\chi_{\omega}P\varphi
+\end{equation}
+
+\end{remark}
+
+
+\begin{proof}
+    
+\end{proof}
+
+
+
+

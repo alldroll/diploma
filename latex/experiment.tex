@@ -5,7 +5,7 @@
 Рассмотрим задачу с построенным выше стабилизирующим оператором
 
 \begin{equation}\label{sys}
-u_t - u_xx - \alpha u = -r\chi_{\omega}P_m u, \quad 0 < x < 1, \quad t > 0
+u_t - u_{xx} - \alpha u = -r\chi_{\omega}P_m u, \quad 0 < x < 1, \quad t > 0
 \end{equation}
 К уравнению \eqref{sys} добавим начальное и граничные условия
 \begin{gather}\label{s_control}
@@ -14,9 +14,9 @@ u(x, 0) = u_{0}(x) \in H \nonumber
 \end{gather}
 
 % Для решения задачи стабилизиции, выберем $\omega \in (0, 1)$, $m \in \mathbb{N}$ и подбёрем такой параметр $r > 0$, чтобы решение системы \eqref{sys} стремилось к 0 при $t \rightarrow \infty$\\ 
-Для численной реализации, запишем для \eqref{sys} неявную разностную схему :\\
+Для численной реализации, запишем для \eqref{sys} неявную разностную схему \\
 \begin{equation}\label{scheme}
-	\frac{u^{j + 1}_i - u^j_i}{\tau} - \frac{u_{i + 1}^{j + 1} - 2u_{i + 1}^{j} + u_{i + 1}^{j - 1}}{h^2} - \alpha u^j_i + r\chi_{\omega}P_m u^j_i = 0
+	\frac{u^{j + 1}_i - u^j_i}{\tau} - \frac{u_{i + 1}^{j + 1} - 2u_{i}^{j + 1} + u_{i - 1}^{j + 1}}{h^2} - \alpha u_{i}^{j + 1} + r\chi_{\omega}P_m u^j_i = 0
 \end{equation}
 Запишем аппроксимацию начального и граничных условий:\\
 \begin{gather}
@@ -24,7 +24,7 @@ u_i^0 = u_0(x_i) \\*
 u_1^{j+1} = u_N^{j+1} = 0 \nonumber
 \end{gather}
 Вспомним, что оператор проектирования имеет вид :\\
-$P_m u = \sum \limits_{j=1}^{m} {(u, w_j) w_j} = \sqrt{2} (\sum \limits_{j=1}^{m} {C_k \sin{\pi k x}})$. Здесь $C_k = \sqrt{2} \int\limits_0^1{u(s)\sin{(\pi k s)} ds}$\\
+$P_m u = \sum \limits_{j=1}^{m} {(u, w_j) w_j} = \sqrt{2} (\sum \limits_{j=1}^{m} {C_k \sin{(\pi k x)}})$. Здесь $C_k = \sqrt{2} \int\limits_0^1{u(s)\sin{(\pi k s)} ds}$\\
 Заметим, что $C_k$ - это интеграл от быстро осциллирующей функции вида
 \begin{equation}
 	\int\limits_a^b{f(x) e^{i\omega x} dx} \approx \int\limits_a^b{L_3(x) e^{i\omega x} dx}
@@ -40,7 +40,7 @@ $P_m u = \sum \limits_{j=1}^{m} {(u, w_j) w_j} = \sqrt{2} (\sum \limits_{j=1}^{m
 \newtheorem{exmp}{Пример}[section]
 \begin{exmp}
 \end{exmp}
-В качестве начального условия $u(x, 0) = \sin{\pi x}$, а граничные данные возмем равные нулю. Вспомним, что при $\alpha < \pi^2$ система устойчива. На рис.1 приведен график решения задачи \eqref{sys} - \eqref{s_control} без управления $m = 0$, $r = 0$ при $\alpha = \pi^2 - 2$
+В качестве начального условия $u(x, 0) = \sin{(\pi x)}$, а граничные данные возмем равные нулю. Вспомним, что при $\alpha < \pi^2$ система устойчива. На рис.1 приведен график решения задачи \eqref{sys} - \eqref{s_control} без управления $m = 0$, $r = 0$ при $\alpha = \pi^2 - 2$
 
 \begin{figure}[hb]
   \centering

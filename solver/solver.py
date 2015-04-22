@@ -26,7 +26,8 @@ def tdma(a, b, c, d):
 #TODO use tdma, refactor
 def implicit_heat_equation(om, r, p, alpha):
   g = dt / (dx ** 2)
-  b = [(1. + 2 * g - alpha * dt)] * (n + 1)
+  #b = [(1. + 2 * g - alpha * dt)] * (n + 1)
+  b = [(1. + 2 * g - alpha(x1 + i * dx) * dt) for i in range(n + 1)]
   a = [-g] * (n + 1)
   c = [-g] * (n + 1)
 
@@ -50,6 +51,26 @@ def implicit_heat_equation(om, r, p, alpha):
 
     for i in range(n - 1, -1, -1):
       u[j][i] = al[i] * u[j][i + 1] + be[i]
+
+  return u
+
+def implicit_perturbation_heat_equation(om, r, p, alpha):
+  g = dt / (dx ** 2)
+  u = [[0. for x in range(n + 1)] for x in xrange(m + 1)]
+  a = [-g] * (n + 1)
+  b = [(1. + 2 * g - alpha(x1 + i * dx) * dt) for i in range(n + 1)]
+  c = [-g] * (n + 1)
+
+  a[0] = c[0] = a[-1] = c[-1] = 0
+
+  for i in range(n + 1):
+    u[0][i] = yt0(x1 + i * dx)
+
+  w = lambda i, j : u[j - 1][i] - dt * r * chi(om, x1 + i * dx) * pm(p, u[j - 1], x1, x2)
+
+  for j in range(1, m + 1):
+    d = [yx0(t1 + dt * j)] + [w(i, j) for i in range(1, n)] + [yxl(t1 + dt * j)]
+    u[j] = tdma(a, b, c, d)
 
   return u
 
@@ -140,46 +161,19 @@ def implicit_perturbation_burger_equation(om, r, p):
     d[-1] = 0.
 
     # Neumann
-    # d[0] = 0
-    # d[-1] = 0
     # b[0] = -1
     # c[0] = 1
+    # d[0] = dx * (yx0(t1 + j * dt) - dus(x1))
     # a[-1] = -1
     # b[-1] = 1
+    # d[-1] = dx * (yxl(t1 + j * dt) - dus(x2))
 
     c[1:-1] = [(s(i) - g) for i in range(1, n)]
-    d[1:-1] = [u[j - 1][i] * (1 - dt * dus(x1 + i * dx)) for i in range(1, n)] #- dt * r * chi(om, x1 + i * dx) * pm(p, u[j - 1], x1, x2) 
+    d[1:-1] = [u[j - 1][i] * (1 - dt * dus(x1 + i * dx)) - dt * r * chi(om, x1 + i * dx) * pm(p, u[j - 1], x1, x2)  for i in range(1, n)] #
 
     u[j] = tdma(a, b, c, d)
 
   return u
-
-# def implicit_perturbation_burger_equation(om, r, p):
-#   u = [[0. for x in range(n + 1)] for x in xrange(m + 1)]
-#   g = v * dt / (dx**2)
-#   k = dt / (2 * dx)
-
-#   for i in range(n + 1):
-#     u[0][i] = yt0(x1 + i * dx) - us(x1 + i * dx)
-
-#   a = [0.] * (n + 1)
-#   b = [1 + 2 * g] * (n + 1)
-#   c = [0.] * (n + 1)
-#   d = [0.] * (n + 1) 
-
-#   s = lambda i: k * (us(x1 + i * dx) + u[j - 1][i])
-
-#   for j in range(1, m + 1):
-#     a[1:-1] = [-(g + s(i)) for i in range(1, n)]
-#     a[-1] = b[0] = 1
-#     b[-1] = c[0] = -1
-#     c[1:-1] = [(s(i) - g) for i in range(1, n)]
-#     d[0] = 0.
-#     d[1:-1] = [u[j - 1][i] * (dt * dus(x1 + i * dx) - 1) - dt * r * chi(om, x1 + i * dx) * pm(p, u[j - 1], x1, x2) for i in range(1, n)]
-#     d[-1] = 0.
-#     u[j] = tdma(a, b, c, d)
-
-#   return u
 
 #TODO implement
 def crank_nicolson_burger_equation(om, r, p, alpha):

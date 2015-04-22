@@ -70,7 +70,7 @@ $\\
 Домножим скалярно обе части \eqref{control} на $\varphi$. Учтем, что\\
 $(u, \varphi) = \norm{\varphi}^2$,\\
 $(u_t, \varphi) = (\varphi_t, \varphi) = \frac{1}{2} \frac{d}{dt} \norm{\varphi}^2$,\\
-$(u_xx, \varphi) = (\varphi_xx, \varphi) = -(\varphi_x, \varphi_x) = - \norm{\varphi_x}^2$,\\
+$(u_{xx}, \varphi) = (\varphi_{xx}, \varphi) = -(\varphi_x, \varphi_x) = - \norm{\varphi_x}^2$,\\
 $(\chi_{\omega}\varphi, \varphi) = \norm{\varphi}^2_{\omega}$,\\
 Тогда
 \begin{equation*}
@@ -114,7 +114,7 @@ Cистема $\left\{ w_j|_{\omega} \right\}^m_1$ линейно независ
 \begin{equation*}
 	c_m w_m = 0
 \end{equation*}
-Функция $w_m(x) = \sin{\pi m x}$ не может принимать нулевые значения на целом интервале, следовательно $c_m = 0$. Проделав те же самые рассуждения для $\sum \limits_{j = 1}^{m - 1}{c_j w_j(x)}$, получаем что 
+Функция $w_m(x) = \sin{(\pi m x)}$ не может принимать нулевые значения на целом интервале, следовательно $c_m = 0$. Проделав те же самые рассуждения для $\sum \limits_{j = 1}^{m - 1}{c_j w_j(x)}$, получаем что 
 \begin{equation*}
 	c_1 = c_2 = ... = c_m = 0.
 \end{equation*}
@@ -153,7 +153,7 @@ $\gamma = f(c_1^0, c_2^0, ..., c_m^0) = \inf \limits_{c_1^2 + .. + c_m^2 = 1} {f
 Проведём аналогичные выкладки с $\psi = Q_m u$. Домножим обе части \eqref{control} скалярно на $\psi$. Учтем, что \\
 $(u, \psi) = \norm{\psi}^2$,\\
 $(u_t, \psi) = (\psi_t, \psi) = \frac{1}{2} \frac{d}{dt} \norm{\psi}^2$,\\
-$(u_xx, \psi) = (\psi_xx, \psi) = -(\psi_x, \psi_x) = - \norm{\psi_x}^2$,\\
+$(u_{xx}, \psi) = (\psi_{xx}, \psi) = -(\psi_x, \psi_x) = - \norm{\psi_x}^2$,\\
 $(\chi_{\omega}\varphi, \psi) = \int_{\omega}{\varphi \psi} \le \norm{\varphi} \norm{\psi}$.\\
 
 С помощью неравенства Пуанкаре-Фридрихса-Стеклова получаем оценку
