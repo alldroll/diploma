@@ -166,7 +166,22 @@ $\\
 
 
 \begin{proof}
-    
+    Пусть $\Omega > 0$. Выберим параметры $\Sigma$, $r_0$, $m$ такие, что
+    $\norm{g(t)}$ ограничена на $[0, +\infty)$. Здесь $g(t) = \varphi(t)e^{\Sigma t}$\\
+
+    \begin{gather}
+        g' + \nu Ag - \Sigma g + B(g, y_s) + B(y_s + ge^{-\Sigma t}, g) = -r_0 +
+    h(\norm{Pg} - 2 \norm{Qg})\\*
+        g(0) = \varphi_0
+    \end{gather}
+    Пусть $p = Pg$, $q = Qg$. Рассмотрим интервал $(t_0, t_1)$, где $\norm{p(t)}
+    \le 2 \norm{q(t)}$:\\
+    $g' + \nu Ag - \Sigma g + B(g, y_s) + B(y_s + ge^{-\Sigma t}, g) = 0, \quad
+    t_0 < t < t_1$\\
+    $\frac{1}{2}\frac{d}{dt}\norm{g}^2 + \norm{g_x}^2 - \Sigma \norm{g}^2 +
+    \frac{1}{2}(y_{sx}, g^2) = 0$\\
+
+
 \end{proof}
 
 
