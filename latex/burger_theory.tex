@@ -37,12 +37,12 @@
 \subsection{Формализация}
 Здесь и далее
 \begin{equation}
- H = L^2(\Omega), \quad V = H^1_0(\Omega), \quad \norm{z}^2 = \int_{\Omega}{z^2dx}
+    H = L^2(\Omega), \quad V = H^1_0(\Omega), \quad \norm{z}^2 = \int_{\Omega}{z^2dx}
 \end{equation}
 
 \begin{equation}
     V \subset H = H^{'} \subset V^{'} = H^{-1}(\Omega), (y, z) =
-\int_{\Omega}{yzdx}
+    \int_{\Omega}{yzdx}
 \end{equation}
 
 \begin{equation}
@@ -103,27 +103,24 @@
 
 
 Здесь \\
-$
+\begin{gather*}
     \begin{matrix}
-    r & =
-    & \left\{
+        r & =
+        & \left\{
+        \begin{matrix}
+            r_0, & 2 \norm{Q\varphi} \le \norm{P\varphi}, \quad r_0 > 0, \\
+            0, & \mbox{иначе. }
+        \end{matrix} \right.
+    \end{matrix}, \quad
     \begin{matrix}
-    r_0, & 2 \norm{Q\varphi} \le \norm{P\varphi}, \quad r_0 > 0, \\
-    0, & \mbox{иначе. }
-    \end{matrix} \right.
+        \chi_{\omega}(x) & =
+        & \left\{
+        \begin{matrix}
+            0, & \mbox{если } x \notin \omega, \\
+            1, & \mbox{иначе. }
+        \end{matrix} \right.
     \end{matrix}
-$\\
-и \\
-$
-    \begin{matrix}
-    \chi_{\omega}(x) & =
-    & \left\{
-    \begin{matrix}
-    0, & \mbox{если } x \notin \omega, \\
-    1, & \mbox{иначе. }
-    \end{matrix} \right.
-    \end{matrix}
-$\\
+\end{gather*}
 
 Перепишем задачу в следующем виде
 
@@ -138,52 +135,146 @@ $\\
 \newtheorem{theorem}{Теорема}
 
 \begin{theorem}
-Пусть $y_s \in H^1, \quad \varphi_0 \in H, \quad T > 0$. Тогда $\exists$ решение
-задачи $\varphi \in C([0, T], H) \cap L^2(0, T, V), \varphi' \in L^2(0, T, V')$
+    Пусть $y_s \in H^1, \quad \varphi_0 \in H, \quad T > 0$. Тогда $\exists$ решение
+    задачи $\varphi \in C([0, T], H) \cap L^2(0, T, V), \varphi' \in L^2(0, T, V')$
 \end{theorem}
 
 \begin{remark}
-Пусть $h(\lambda)$ единичная функция Хевисайда, \\
-$
-    \begin{matrix}
-    h(\lambda) & =
-    & \left\{
-    \begin{matrix}
-    1, & \lambda \ge 0 \\
-    0, & \lambda < 0
-    \end{matrix} \right.
-    \end{matrix}
-$\\
+    Пусть $h(\lambda)$ единичная функция Хевисайда, \\
+    \begin{gather*}
+        \begin{matrix}
+            h(\lambda) & =
+            & \left\{
+            \begin{matrix}
+                1, & \lambda \ge 0 \\
+                0, & \lambda < 0
+            \end{matrix} \right.
+        \end{matrix}
+    \end{gather*}
 
-, тогда оператор управления примит следующий вид
+    , тогда оператор управления примит следующий вид
 
-\begin{equation}
-    \Lambda(\varphi) = -r_0 h(-2\norm{Q\varphi} +
-    \norm{P\varphi})\chi_{\omega}P\varphi
-\end{equation}
+    \begin{equation}
+        \Lambda(\varphi) = -r_0 h(-2\norm{Q\varphi} +
+        \norm{P\varphi})\chi_{\omega}P\varphi
+    \end{equation}
 
 \end{remark}
 
 
 \begin{proof}
-    Пусть $\Omega > 0$. Выберим параметры $\Sigma$, $r_0$, $m$ такие, что
-    $\norm{g(t)}$ ограничена на $[0, +\infty)$. Здесь $g(t) = \varphi(t)e^{\Sigma t}$\\
-
-    \begin{gather}
-        g' + \nu Ag - \Sigma g + B(g, y_s) + B(y_s + ge^{-\Sigma t}, g) = -r_0 +
-    h(\norm{Pg} - 2 \norm{Qg})\\*
+    Пусть $\Omega > 0$. Выберим параметры $\sigma$, $r_0$, $m$ такие, что
+    $\norm{g(t)}$ ограничена на $[0, +\infty)$. Здесь $g(t) = \varphi(t)e^{\sigma t}$
+    \begin{gather*}
+        g' + \nu Ag - \sigma g + B(g, y_s) + B(y_s + ge^{-\sigma t}, g) = -r_0 +
+        h(\norm{Pg} - 2 \norm{Qg}) + \chi_{\omega}Pg\\*
         g(0) = \varphi_0
-    \end{gather}
+    \end{gather*}
     Пусть $p = Pg$, $q = Qg$. Рассмотрим интервал $(t_0, t_1)$, где $\norm{p(t)}
-    \le 2 \norm{q(t)}$:\\
-    $g' + \nu Ag - \Sigma g + B(g, y_s) + B(y_s + ge^{-\Sigma t}, g) = 0, \quad
-    t_0 < t < t_1$\\
-    $\frac{1}{2}\frac{d}{dt}\norm{g}^2 + \norm{g_x}^2 - \Sigma \norm{g}^2 +
-    \frac{1}{2}(y_{sx}, g^2) = 0$\\
+    \le 2 \norm{q(t)}$:
+    \begin{gather*}
+        g' + \nu Ag - \sigma g + B(g, y_s) + B(y_s + ge^{-\sigma t}, g) = 0, \quad
+        t_0 < t < t_1\\
+        \frac{1}{2}\frac{d}{dt}\norm{g}^2 + \norm{g_x}^2 - \sigma \norm{g}^2 +
+        \frac{1}{2}(y_{sx}, g^2) = 0
+    \end{gather*}
 
+    \begin{gather*}
+        \norm{g}^2 = \norm{p}^2 + \norm{q}^2 < 5\norm{q}^2 < 5\lambda^{-1}_{m +
+        1}\norm{q_x} \le 5 \lambda^{-1}_{m + 1}\norm{g_x}^2
+    \end{gather*}
 
+    Пусть 
+    \begin{equation}
+        C_1 = \sigma + \frac{1}{2}max|y_{sx}|, \quad 5C_1\lambda^{-1}_{m + 1} <
+        \frac{\nu}{2}
+    \end{equation}
+
+    Тогда отсюда 
+    \begin{equation}
+        \frac{d}{dt}\norm{g}^2 + \nu \norm{g_x} < 0
+    \end{equation}
+
+    Тогда следует
+
+    \begin{equation}
+        \norm{g(t_1)} < \norm{g(t_0)}
+    \end{equation}
+
+    Далее 
+    \begin{gather*}
+        \frac{1}{2}\frac{d}{dt}\norm{q}^2 + \nu \norm{q_x}^2 - \sigma \norm{q}^2 +
+        ((y_s g)_x, q) + \frac{1}{2}e^{-\sigma t}((g^2)_x, q) = 0\\
+        \norm{g_x}^2 = \norm{p_x}^2 + \norm{q_x}^2 \le \lambda_{m} \norm{p}^2 +
+        \norm{q_x}^2 \le 5\norm{q_x}^2\\
+        |(y_s g)_x, q)| \le C_0 \norm{g} \norm{q_x} < 5 C_0 \lambda^{-1}_{m + 1}
+        \norm{q_x}^2, \quad C_0 = max|y_s|\\
+        |((g^2)_x, q)| = |(g^2, q_x)| \le \norm{g} \norm{g_x} \norm{q_x}
+    \end{gather*}
+    
+    Пусть теперь $\norm{p(t)} \ge 2 \norm{q(t)}, \quad t \in (t_0, t_1)$\\
+    \begin{gather*}
+        g' + \nu Ag - \sigma g + (y_s g)_x + \frac{1}{2} e^{-\sigma t} (g^2)_x +
+        r_0 \chi_{\omega} P = 0
+    \end{gather*}
+
+    Заметим что
+    \begin{gather*}
+        \gamma |(p, q)_{L^2(\omega)}| \le \norm{p} \norm{q} \le \frac{1}{2}
+        \norm{p}^2 \text{следует, что} \\
+        \norm{p}^2_{L^2(\omega)} + \gamma (p,
+        q)_{L^2(\omega)} \ge \frac{\gamma}{2}\norm{p}^2
+    \end{gather*}
+    
+    \begin{gather*}
+        \frac{1}{2} \frac{d}{dt} [ \norm{p}^2 + \nu [ \norm{p_x}^2 - \sigma [
+        \norm{p}^2 + \gamma \norm{q}^2] ]  + ( (y_s g)_x, p + \gamma q) + \gamma
+    \norm{q} \\* + \gamma\norm{q_x}^2] + \frac{1}{2} e^{-\sigma t} ( (g^2)_x, p +
+    \sigma q) + \frac{r_0 \gamma}{2} \norm{p}^2 \le 0\\
+    |( (y_s g)_x, p)| \le C_0 \norm{p_x} \norm{g} \le \frac{3}{2} C_0 \norm{p}
+    \norm{p_x} \le \frac{\nu}{2} \norm{p_x}^2 + \frac{1}{2\nu}(\frac{3}{2}C_0)^2
+    \norm{p}^2
+    \end{gather*}
+
+    \begin{equation}
+        \norm{g} \le \norm{p} + \norm{q} \le \frac{3}{2} \norm{p}
+    \end{equation}
+
+    \begin{gather*}
+        |((y_s g)_x, q)| \le C_0 \norm{q_x} \norm{g} \le \frac{3}{2} C_0
+        \norm{q_x} \norm{p} \le \frac{\nu}{2} \norm{q_x}^2 + \frac{9C_0^2}{8\nu}
+        \norm{p}^2
+    \end{gather*}
+
+    \begin{align*}
+        \frac{d}{dt}(\norm{p}^2 + \gamma \norm{g}^2) + \nu(\norm{p_x}^2 + \gamma
+        \norm{q_x}^2) + (r_0\gamma - (2 + \gamma)\sigma - (1 +
+        \gamma)\frac{9C_0^2}{4\nu})\norm{p}^2 \\* \le |(g^2, p_x + \gamma q_x)|
+    \end{align*}
+
+    \begin{equation}
+        r_0 > C_2 = (1 + \frac{2}{\gamma})\sigma + (1 +
+        \frac{1}{\gamma})\frac{9C_0^2}{4\nu}
+    \end{equation}
+
+    Оценим правую часть 
+
+    \begin{gather*}
+        |(g^2, p_x + \gamma q_x)| = (1 - \gamma)|(g^2, p_x)| = (1 - \gamma)|(p^2
+        + 2pq + q^2, p_x)| \\*
+        = (1 - \gamma)|(q^2, p_x) - (p^2, q_x)| \le \norm{p_x} \norm{q_x}
+        (\norm{p} + \norm{q}) \\* \le
+        \frac{1}{2\sqrt{\gamma}}(\norm{p_x}^2 + \gamma \norm{q_x}^2)
+        \frac{2}{\sqrt{\gamma}}\sqrt{\norm{p}^2 + \gamma \norm{q}^2}
+    \end{gather*}
+    т.к. $\norm{p} + \norm{q} \le \frac{2}{\sqrt{\gamma}}\sqrt{\norm{p}^2 +
+        \gamma \norm{q}^2}$ отсюда следует, что
+
+    \begin{equation}
+        \frac{d}{dt}(\norm{p}^2 + \gamma \gamma{q}^2) + (\norm{p_x}^2 + \gamma
+        \norm{q_x}^2) (\nu - \frac{1}{\nu} \sqrt{\norm{p}^2 + \gamma \norm{q}^2}
+        \le 0
+    \end{equation}
+
+    
 \end{proof}
-
-
-
-
