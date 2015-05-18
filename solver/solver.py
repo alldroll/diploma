@@ -3,6 +3,7 @@
 from integration import *
 from control import *
 from pde import *
+import numpy as np
 
 def tdma(a, b, c, d):
   nf = len(a)
@@ -54,7 +55,7 @@ def implicit_heat_equation(om, r, p, alpha):
 
   return u
 
-def implicit_perturbation_heat_equation(om, r, p, alpha):
+def implicit_perturbation_heat_equation(om, r, p, alpha, extended=False):
   g = dt / (dx ** 2)
   u = [[0. for x in range(n + 1)] for x in xrange(m + 1)]
   a = [-g] * (n + 1)
@@ -65,8 +66,11 @@ def implicit_perturbation_heat_equation(om, r, p, alpha):
 
   for i in range(n + 1):
     u[0][i] = yt0(x1 + i * dx)
-
-  w = lambda i, j : u[j - 1][i] - dt * r * chi(om, x1 + i * dx) * pm(p, u[j - 1], x1, x2)
+  if not extended:
+    w = lambda i, j : u[j - 1][i] - dt * r * chi(om, x1 + i * dx) * pm(p, u[j -
+      1], x1, x2, x1 + i * dx)
+  else: 
+    w = lambda i, j : u[j - 1][i] - dt * r * chi(om, x1 + i * dx) * extended_control(u[j - 1], p)[i]
 
   for j in range(1, m + 1):
     d = [yx0(t1 + dt * j)] + [w(i, j) for i in range(1, n)] + [yxl(t1 + dt * j)]
@@ -74,8 +78,9 @@ def implicit_perturbation_heat_equation(om, r, p, alpha):
 
   return u
 
-#it works
-def explicit_burger_equation():
+
+#it works 
+def explicit_burger_equation(): 
   u = [[0. for x in range(n + 1)] for x in xrange(m + 1)]
   g = dt / (dx**2)
   f = lambda u: u**2 / 2

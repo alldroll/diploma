@@ -3,7 +3,7 @@
 import numpy as np
 import math
 
-n, m = 200, 200
+n, m = 50, 200
 x1, x2 = 0., 1.0
 t1, t2 = 0., 1.0
 dx, dt = (x2 - x1) / n, (t2 - t1) / m

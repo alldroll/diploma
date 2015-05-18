@@ -276,5 +276,32 @@
         \le 0
     \end{equation}
 
+    функция $\norm{p}^2 + \gamma \norm{q}^2$ убывает на промежутке $(t_0, t_1)$.
+    Поэтому $(\norm{p}^2 + \gamma \norm{q}^2)_{t=t1} < \nu \gamma$, если 
+    $(\norm{p}^2 + \gamma \norm{q}^2)_{t=t0} < \nu \gamma$. Из вышеперечисленных
+    оценок видно, что 
+    \begin{equation}\label{10}
+        \norm{p}^2 + \gamma \norm{q}^2 < \nu \gamma, \quad \forall t > 0,
+    \end{equation}
+    если $\norm{g(0)}^2 < \nu \gamma$\\
+
+    Действительно, пусть $t_0 > 0$ первый момент времени, когда происходит
+    переключение управления, т.е. $\norm{p(t_0)} = 2\norm{q(t_0)}$ и функция
+    $r(t) = h(\norm{p(t)} - 2 \norm{q(t)})$, $t > 0$ изменяет значение при
+    переходе через точку $t_0$. (Если таких точек нет, то выполнение неравенства
+    \eqref{10} очевидно). Тогда из \eqref{8} следует, что 
+    
+    \begin{gather*}
+        (\norm{p}^2 + \gamma \norm{q}^2)_{t = t_0} \le (\norm{p}^2 +
+        \norm{q}^2)_{t = t_0} < \norm{g(0)}^2 \le \nu \gamma, 
+    \end{gather*}
+    если $r(t) = 0$, $0 < t < t_0$. И соотвественно из \eqref{9}:
+    \begin{gather*}
+        (\norm{p}^2 + \gamma \norm{q}^2)_{t=t_1} \le (\norm{p}^2 + \gamma
+        \norm{q}^2)_{t=t_0} \le \norm{g(0)}^2 < \nu \gamma,
+    \end{gather*}
+    если $r(t) = 1$, $t_0 < t < t_1$\\
+    Далее, если $t_0 < t_1$ 
+
     
 \end{proof}

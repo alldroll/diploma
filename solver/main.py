@@ -5,7 +5,6 @@ from draw import *
 
 def main():
 
-
   ##shock-like solutions fig2
   # x = np.arange(0, 1, 0.01)
   # draw_subplots('fig1', x, 
@@ -23,11 +22,15 @@ def main():
 
   ##linear heat equation stabilization 
   #u = implicit_heat_equation(Omega([[0., 0.2]]), 10., 3, alpha)
-  e = implicit_heat_equation(Omega([[0., 0.]]), 0., 0, alpha)
-  u = implicit_heat_equation(Omega([[0., 0.4]]), 8., 2, alpha)
+
+  #e = implicit_perturbation_heat_equation(Omega([[0., 0.]]), 0., 0, alpha)
+  u = implicit_perturbation_heat_equation(Omega([[0., 0.4]]), 8., 2, alpha,
+          True)
+
   #e = implicit_perturbation_burger_equation(Omega([[0, 0.2]]), 0, 0)
   #u = implicit_perturbation_burger_equation(Omega([[0, 0.2]]), 10., 3)
-  draw_surface(e, 'exactly', x1, x2, dx, t1, t2, dt)  
+
+  #draw_surface(e, 'exactly', x1, x2, dx, t1, t2, dt)  
   draw_surface(u, 'repaired', x1, x2, dx, t1, t2, dt)
 
   ##show on chosed time several plots
