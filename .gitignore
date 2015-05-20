@@ -1,4 +1,4 @@
 *.pyc
 latex/*
 !latex/*.tex
-!latex/images/*.png
+!latex/images/
