@@ -8,7 +8,7 @@
 
 Неустойчивое уравнение Бюргерса
 
-\begin{gather}
+\begin{gather}\label{1}
     y_t - \nu y_{xx} + yy_x = f \\*
     y|_{\partial \Omega} = y_{bi} \\*
     y|_{t=0} = y_0
@@ -17,13 +17,13 @@
 Стационарное уравнение Бюргерса
 
 \begin{gather}
-    y_{sxx} + y_s y_{sx} = f_s \\*
+    -\nu y_{sxx} + y_s y_{sx} = f_s \\*
     y|_{s \partial \Omega} = y_{bi}
 \end{gather}
 
 \subsection{Задача стабилизации}
 Найти оператор управления с обратной связью $\Lambda$ такой, что решение задачи
-(1), где $f = f_s + \Lambda (y - y_s)$ экспоненциально сходится к $y_s$
+\eqref{1}, где $f = f_s + \Lambda (y - y_s)$ экспоненциально сходится к $y_s$
 
 Обозначим за $\varphi = y - y_s$, тогда
 
@@ -70,7 +70,7 @@
 Введем следующие обозначения
 
 \begin{equation}
-    H_m = span{w_1, ..., w_m}, \quad P = P_m: H \rightarrow H_m, \quad Q=Q_m = I
+    H_m = span\{w_1, ..., w_m\}, \quad P = P_m: H \rightarrow H_m, \quad Q=Q_m = I
     - P
 \end{equation}
 
@@ -87,7 +87,7 @@
 \end{equation}
 
 \begin{equation}
-    \norm{w}^2 \le \lambda^{-1}_{m + 1} \norm{w_x}^2 \forall w \in V \cap
+    \norm{w}^2 \le \lambda^{-1}_{m + 1} \norm{w_x}^2, \quad \forall w \in V \cap
     H_m^{\bot}
 \end{equation}
 
@@ -126,7 +126,7 @@
 
 \begin{gather}
     \varphi' + \nu A\varphi + B(\varphi, y_s) + B(y_s + \varphi, \varphi) =
-    \Gamma(\varphi), \quad t > 0 \\*
+    \Lambda(\varphi), \quad t > 0 \\*
     \varphi(0) = \varphi_0 = y_0 - y_s
 \end{gather}
 
@@ -147,12 +147,12 @@
             & \left\{
             \begin{matrix}
                 1, & \lambda \ge 0 \\
-                0, & \lambda < 0
+                0, & \lambda < 0, 
             \end{matrix} \right.
         \end{matrix}
     \end{gather*}
 
-    , тогда оператор управления примит следующий вид
+    тогда оператор управления примит следующий вид
 
     \begin{equation}
         \Lambda(\varphi) = -r_0 h(-2\norm{Q\varphi} +
@@ -162,12 +162,12 @@
 \end{remark}
 
 
-\begin{proof}
+%\begin{proof}
     Пусть $\Omega > 0$. Выберим параметры $\sigma$, $r_0$, $m$ такие, что
     $\norm{g(t)}$ ограничена на $[0, +\infty)$. Здесь $g(t) = \varphi(t)e^{\sigma t}$
     \begin{gather*}
-        g' + \nu Ag - \sigma g + B(g, y_s) + B(y_s + ge^{-\sigma t}, g) = -r_0 +
-        h(\norm{Pg} - 2 \norm{Qg}) + \chi_{\omega}Pg\\*
+        g' + \nu Ag - \sigma g + B(g, y_s) + B(y_s + ge^{-\sigma t}, g) = -r_0 
+        h(\norm{Pg} - 2 \norm{Qg}) \chi_{\omega}Pg\\*
         g(0) = \varphi_0
     \end{gather*}
     Пусть $p = Pg$, $q = Qg$. Рассмотрим интервал $(t_0, t_1)$, где $\norm{p(t)}
@@ -197,7 +197,7 @@
 
     Тогда следует
 
-    \begin{equation}
+    \begin{equation}\label{8}
         \norm{g(t_1)} < \norm{g(t_0)}
     \end{equation}
 
@@ -276,7 +276,7 @@
         \le 0
     \end{equation}
 
-    функция $\norm{p}^2 + \gamma \norm{q}^2$ убывает на промежутке $(t_0, t_1)$.
+    Функция $\norm{p}^2 + \gamma \norm{q}^2$ убывает на промежутке $(t_0, t_1)$.
     Поэтому $(\norm{p}^2 + \gamma \norm{q}^2)_{t=t1} < \nu \gamma$, если 
     $(\norm{p}^2 + \gamma \norm{q}^2)_{t=t0} < \nu \gamma$. Из вышеперечисленных
     оценок видно, что 
@@ -301,7 +301,18 @@
         \norm{q}^2)_{t=t_0} \le \norm{g(0)}^2 < \nu \gamma,
     \end{gather*}
     если $r(t) = 1$, $t_0 < t < t_1$\\
-    Далее, если $t_0 < t_1$ 
+    В случае, если $r(t) = 0$, $t_0 < t < t_1$, то в силу \eqref{8} 
+    \begin{gather*}
+        (\norm{p}^2 + \gamma \norm{q}^2)_{t=t_1} = \frac{4 +
+        \gamma}{5}(\norm{p}^2 + \norm{q}^2)_{t = t_1} < \\*
+        \frac{4 + \gamma}{5}(\norm{p}^2 + \norm{q}^2)_{t=t_0} = (\norm{p}^2 +
+        \gamma \norm{q}^2)_{t=t_0} < \nu \gamma
+    \end{gather*}
+    Кроме того, на указанном промежутке также справедливо неравенство 
 
+    \begin{equation}
+        (\norm{p}^2 + \norm{q}^2)(t) < (\norm{p}^2 + \norm{q}^2)(t_0) \le
+        \frac{1}{\gamma}(\norm{p}^2 + \gamma \norm{q}^2)(t_0) \le \nu
+    \end{equation}
     
-\end{proof}
+%\end{proof}
