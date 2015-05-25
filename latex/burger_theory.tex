@@ -1,117 +1,53 @@
-\section{Введение}
-
-Пусть
+\subsection{Конструкция управления}
+Для сведения начально-краевой задачи \eqref{fluct} к задаче Коши для уравнения
+с операторными коэффициентами определим отображения 
 
 \begin{equation}
-    \Omega = (0, 1), \quad \omega \subset \Omega
+    A: V \rightarrow V^{'}, \ (Ay, z) = (y_x, z_x)
 \end{equation}
 
-Неустойчивое уравнение Бюргерса
+\begin{equation}
+    B: V \times V \rightarrow V^{'}, \ (B(y, z), w) = (yz_x, w)
+\end{equation}
 
-\begin{gather}\label{1}
-    y_t - \nu y_{xx} + yy_x = f \\*
-    y|_{\partial \Omega} = y_{bi} \\*
-    y|_{t=0} = y_0
-\end{gather}
-
-Стационарное уравнение Бюргерса
+которые выполняются для всех $y, z, w$ из пространства $V$. Для функций из
+пространства $V$ справедливы следующие неравенства, которые будут далее
+использоваться
 
 \begin{gather}
-    -\nu y_{sxx} + y_s y_{sx} = f_s \\*
-    y|_{s \partial \Omega} = y_{bi}
-\end{gather}
-
-\subsection{Задача стабилизации}
-Найти оператор управления с обратной связью $\Lambda$ такой, что решение задачи
-\eqref{1}, где $f = f_s + \Lambda (y - y_s)$ экспоненциально сходится к $y_s$
-
-Обозначим за $\varphi = y - y_s$, тогда
-
-\begin{gather}
-    \varphi_t - \nu \varphi_{xx} + y_s \varphi_x + \varphi y_{sx} + \varphi
-    \varphi_x = \Lambda(\varphi) \\*
-    \varphi_0 = y_0 - y_s \\*
-    \varphi|_{\partial \Omega} = 0
-\end{gather}
-
-\subsection{Формализация}
-Здесь и далее
-\begin{equation}
-    H = L^2(\Omega), \quad V = H^1_0(\Omega), \quad \norm{z}^2 = \int_{\Omega}{z^2dx}
-\end{equation}
-
-\begin{equation}
-    V \subset H = H^{'} \subset V^{'} = H^{-1}(\Omega), (y, z) =
-    \int_{\Omega}{yzdx}
-\end{equation}
-
-\begin{equation}
-    A: V \rightarrow V^{'}, (Ay, z) = (y_x, z_x)
-\end{equation}
-
-\begin{equation}
-    B: V \times V \rightarrow V^{'}, \quad (B(y, z), w) = (yz_x, w)
-\end{equation}
-
-\begin{equation}
-    A w_j = \lambda_j w_j, \quad j = 1, 2.. \quad \lambda_j \rightarrow +\infty
-\end{equation}
-
-\begin{equation}
-    \lambda_j = (\pi j)^2, \quad w_j(x) = \sqrt{2}\sin{(\pi j x)}
-\end{equation}
-
-Заметим что базис ортонормирован в $H$
-
-\begin{equation}
-    (w_j, w_k) = \delta_{jk}
-\end{equation}
-
-Введем следующие обозначения
-
-\begin{equation}
-    H_m = span\{w_1, ..., w_m\}, \quad P = P_m: H \rightarrow H_m, \quad Q=Q_m = I
-    - P
-\end{equation}
-
-\subsubsection{Неравенства}
-
-\begin{equation}
-    \lambda_1 \norm{v}^2 \le \norm{v_x}^2, \quad \norm{v}^4_{L^4} \le \norm{v}^2
-    \norm{v_x}^2
-\end{equation}
-
-\begin{equation}
+    \lambda_1 \norm{v}^2 \le \norm{v_x}^2, \ \norm{v}^4_{L^4} \le \norm{v}^2
+    \norm{v_x}^2\\
     |(B(y, z), w)| \le \norm{y}_{L^4} \norm{z_x} \norm{w}_{L^4} \le
-    \norm{y}^{1/2} \norm{y_x}^{1/2} \norm{z_x} \norm{w}^{1/2} \norm{w_x}^{1/2}
-\end{equation}
-
-\begin{equation}
-    \norm{w}^2 \le \lambda^{-1}_{m + 1} \norm{w_x}^2, \quad \forall w \in V \cap
-    H_m^{\bot}
-\end{equation}
-
-\begin{equation}
-    |v(x)| \le \norm{v_x}, \quad |(B(y, z), w)| \le \norm{y_x} \norm{z_x}
+    \norm{y}^{1/2} \norm{y_x}^{1/2} \norm{z_x} \norm{w}^{1/2}
+    \norm{w_x}^{1/2}\\
+    \norm{w}^2 \le \lambda^{-1}_{m + 1} \norm{w_x}^2, \ \forall w \in V \cap
+    H_m^{\bot}\\
+    |v(x)| \le \norm{v_x}, \ |(B(y, z), w)| \le \norm{y_x} \norm{z_x}
     \norm{w} \text{или} \norm{y} \norm{z_x} \norm{w_x}
-\end{equation}
+\end{gather}
 
-Оператор локально распределенного управления $\Lambda: H \rightarrow H$, \\
+В дальнейшем, если $X$ - банахово пространство, то через $L^p(0, T;X)$(соотв.
+$C([0, T];X))$ обозначается пространство $L^p$ (соотв. непрерывных) функций,
+определенных на $[0, T]$ со значениями в $X$.
+
+Оператор стабилизирующего управления имеет следующую структуру
+
 \begin{equation}
-    \Lambda(\varphi) = -r \xi_{\omega}P\varphi
+    \Lambda(\varphi) = -r \chi_{\omega}h(\mu)P\varphi
 \end{equation}
 
 
 Здесь \\
 \begin{gather*}
     \begin{matrix}
-        r & =
+        h(\mu) & =
         & \left\{
         \begin{matrix}
-            r_0, & 2 \norm{Q\varphi} \le \norm{P\varphi}, \quad r_0 > 0, \\
-            0, & \mbox{иначе. }
+            0, & \mu < 0, \\
+            1, & \mu > 0, \\
+            [0, 1], & \mu = 0
         \end{matrix} \right.
-    \end{matrix}, \quad
+    \end{matrix}, \
     \begin{matrix}
         \chi_{\omega}(x) & =
         & \left\{
@@ -122,12 +58,16 @@
     \end{matrix}
 \end{gather*}
 
-Перепишем задачу в следующем виде
+$r > 0$, $\chi_{\omega}$ - характеристическая функция области $\omega$,
+$h(\mu)$ - многозначная функция Хевисайда\\
 
-\begin{gather}
-    \varphi' + \nu A\varphi + B(\varphi, y_s) + B(y_s + \varphi, \varphi) =
-    \Lambda(\varphi), \quad t > 0 \\*
-    \varphi(0) = \varphi_0 = y_0 - y_s
+Используя введенные операторы, система \eqref{fluct} стандартным образом
+переписывается $(\varphi' = \frac{d\varphi}{dt})$
+
+\begin{gather}\label{operator_fluct}
+    \varphi' + \nu A\varphi + B(\varphi, U) + B(U + \varphi, \varphi) =
+    \Lambda(\varphi), \ t > 0 \\*
+    \varphi|_{t = 0} = \varphi_0 = u_0 - U
 \end{gather}
 
 \subsection{Разрешимость задачи на конечном интервале времени}
@@ -135,184 +75,149 @@
 \newtheorem{theorem}{Теорема}
 
 \begin{theorem}
-    Пусть $y_s \in H^1, \quad \varphi_0 \in H, \quad T > 0$. Тогда $\exists$ решение
-    задачи $\varphi \in C([0, T], H) \cap L^2(0, T, V), \varphi' \in L^2(0, T, V')$
+    Пусть $U \in W^1_{\infty}, \ \varphi_0 \in H, \ T > 0$. 
+    Тогда $\exists$ решение задачи \eqref{operator_fluct} такое, что
+    $$\varphi \in C([0, T], H) \cap L^2(0, T, V), \ \varphi' \in L^2(0, T, V')$$
 \end{theorem}
 
-\begin{remark}
-    Пусть $h(\lambda)$ единичная функция Хевисайда, \\
-    \begin{gather*}
-        \begin{matrix}
-            h(\lambda) & =
-            & \left\{
-            \begin{matrix}
-                1, & \lambda \ge 0 \\
-                0, & \lambda < 0, 
-            \end{matrix} \right.
-        \end{matrix}
-    \end{gather*}
-
-    тогда оператор управления примит следующий вид
-
-    \begin{equation}
-        \Lambda(\varphi) = -r_0 h(-2\norm{Q\varphi} +
-        \norm{P\varphi})\chi_{\omega}P\varphi
-    \end{equation}
-
-\end{remark}
-
-
 %\begin{proof}
-    Пусть $\Omega > 0$. Выберим параметры $\sigma$, $r_0$, $m$ такие, что
-    $\norm{g(t)}$ ограничена на $[0, +\infty)$. Здесь $g(t) = \varphi(t)e^{\sigma t}$
-    \begin{gather*}
-        g' + \nu Ag - \sigma g + B(g, y_s) + B(y_s + ge^{-\sigma t}, g) = -r_0 
-        h(\norm{Pg} - 2 \norm{Qg}) \chi_{\omega}Pg\\*
-        g(0) = \varphi_0
-    \end{gather*}
-    Пусть $p = Pg$, $q = Qg$. Рассмотрим интервал $(t_0, t_1)$, где $\norm{p(t)}
-    \le 2 \norm{q(t)}$:
-    \begin{gather*}
-        g' + \nu Ag - \sigma g + B(g, y_s) + B(y_s + ge^{-\sigma t}, g) = 0, \quad
-        t_0 < t < t_1\\
-        \frac{1}{2}\frac{d}{dt}\norm{g}^2 + \norm{g_x}^2 - \sigma \norm{g}^2 +
-        \frac{1}{2}(y_{sx}, g^2) = 0
-    \end{gather*}
-
-    \begin{gather*}
-        \norm{g}^2 = \norm{p}^2 + \norm{q}^2 < 5\norm{q}^2 < 5\lambda^{-1}_{m +
-        1}\norm{q_x} \le 5 \lambda^{-1}_{m + 1}\norm{g_x}^2
-    \end{gather*}
-
-    Пусть 
-    \begin{equation}
-        C_1 = \sigma + \frac{1}{2}max|y_{sx}|, \quad 5C_1\lambda^{-1}_{m + 1} <
-        \frac{\nu}{2}
-    \end{equation}
-
-    Тогда отсюда 
-    \begin{equation}
-        \frac{d}{dt}\norm{g}^2 + \nu \norm{g_x} < 0
-    \end{equation}
-
-    Тогда следует
-
-    \begin{equation}\label{8}
-        \norm{g(t_1)} < \norm{g(t_0)}
-    \end{equation}
-
-    Далее 
-    \begin{gather*}
-        \frac{1}{2}\frac{d}{dt}\norm{q}^2 + \nu \norm{q_x}^2 - \sigma \norm{q}^2 +
-        ((y_s g)_x, q) + \frac{1}{2}e^{-\sigma t}((g^2)_x, q) = 0\\
-        \norm{g_x}^2 = \norm{p_x}^2 + \norm{q_x}^2 \le \lambda_{m} \norm{p}^2 +
-        \norm{q_x}^2 \le 5\norm{q_x}^2\\
-        |(y_s g)_x, q)| \le C_0 \norm{g} \norm{q_x} < 5 C_0 \lambda^{-1}_{m + 1}
-        \norm{q_x}^2, \quad C_0 = max|y_s|\\
-        |((g^2)_x, q)| = |(g^2, q_x)| \le \norm{g} \norm{g_x} \norm{q_x}
-    \end{gather*}
-    
-    Пусть теперь $\norm{p(t)} \ge 2 \norm{q(t)}, \quad t \in (t_0, t_1)$\\
-    \begin{gather*}
-        g' + \nu Ag - \sigma g + (y_s g)_x + \frac{1}{2} e^{-\sigma t} (g^2)_x +
-        r_0 \chi_{\omega} P = 0
-    \end{gather*}
-
-    Заметим что
-    \begin{gather*}
-        \gamma |(p, q)_{L^2(\omega)}| \le \norm{p} \norm{q} \le \frac{1}{2}
-        \norm{p}^2 \text{следует, что} \\
-        \norm{p}^2_{L^2(\omega)} + \gamma (p,
-        q)_{L^2(\omega)} \ge \frac{\gamma}{2}\norm{p}^2
-    \end{gather*}
-    
-    \begin{gather*}
-        \frac{1}{2} \frac{d}{dt} [ \norm{p}^2 + \nu [ \norm{p_x}^2 - \sigma [
-        \norm{p}^2 + \gamma \norm{q}^2] ]  + ( (y_s g)_x, p + \gamma q) + \gamma
-    \norm{q} \\* + \gamma\norm{q_x}^2] + \frac{1}{2} e^{-\sigma t} ( (g^2)_x, p +
-    \sigma q) + \frac{r_0 \gamma}{2} \norm{p}^2 \le 0\\
-    |( (y_s g)_x, p)| \le C_0 \norm{p_x} \norm{g} \le \frac{3}{2} C_0 \norm{p}
-    \norm{p_x} \le \frac{\nu}{2} \norm{p_x}^2 + \frac{1}{2\nu}(\frac{3}{2}C_0)^2
-    \norm{p}^2
-    \end{gather*}
-
-    \begin{equation}
-        \norm{g} \le \norm{p} + \norm{q} \le \frac{3}{2} \norm{p}
-    \end{equation}
-
-    \begin{gather*}
-        |((y_s g)_x, q)| \le C_0 \norm{q_x} \norm{g} \le \frac{3}{2} C_0
-        \norm{q_x} \norm{p} \le \frac{\nu}{2} \norm{q_x}^2 + \frac{9C_0^2}{8\nu}
-        \norm{p}^2
-    \end{gather*}
-
-    \begin{align*}
-        \frac{d}{dt}(\norm{p}^2 + \gamma \norm{g}^2) + \nu(\norm{p_x}^2 + \gamma
-        \norm{q_x}^2) + (r_0\gamma - (2 + \gamma)\sigma - (1 +
-        \gamma)\frac{9C_0^2}{4\nu})\norm{p}^2 \\* \le |(g^2, p_x + \gamma q_x)|
-    \end{align*}
-
-    \begin{equation}
-        r_0 > C_2 = (1 + \frac{2}{\gamma})\sigma + (1 +
-        \frac{1}{\gamma})\frac{9C_0^2}{4\nu}
-    \end{equation}
-
-    Оценим правую часть 
-
-    \begin{gather*}
-        |(g^2, p_x + \gamma q_x)| = (1 - \gamma)|(g^2, p_x)| = (1 - \gamma)|(p^2
-        + 2pq + q^2, p_x)| \\*
-        = (1 - \gamma)|(q^2, p_x) - (p^2, q_x)| \le \norm{p_x} \norm{q_x}
-        (\norm{p} + \norm{q}) \\* \le
-        \frac{1}{2\sqrt{\gamma}}(\norm{p_x}^2 + \gamma \norm{q_x}^2)
-        \frac{2}{\sqrt{\gamma}}\sqrt{\norm{p}^2 + \gamma \norm{q}^2}
-    \end{gather*}
-    т.к. $\norm{p} + \norm{q} \le \frac{2}{\sqrt{\gamma}}\sqrt{\norm{p}^2 +
-        \gamma \norm{q}^2}$ отсюда следует, что
-
-    \begin{equation}
-        \frac{d}{dt}(\norm{p}^2 + \gamma \gamma{q}^2) + (\norm{p_x}^2 + \gamma
-        \norm{q_x}^2) (\nu - \frac{1}{\nu} \sqrt{\norm{p}^2 + \gamma \norm{q}^2}
-        \le 0
-    \end{equation}
-
-    Функция $\norm{p}^2 + \gamma \norm{q}^2$ убывает на промежутке $(t_0, t_1)$.
-    Поэтому $(\norm{p}^2 + \gamma \norm{q}^2)_{t=t1} < \nu \gamma$, если 
-    $(\norm{p}^2 + \gamma \norm{q}^2)_{t=t0} < \nu \gamma$. Из вышеперечисленных
-    оценок видно, что 
-    \begin{equation}\label{10}
-        \norm{p}^2 + \gamma \norm{q}^2 < \nu \gamma, \quad \forall t > 0,
-    \end{equation}
-    если $\norm{g(0)}^2 < \nu \gamma$\\
-
-    Действительно, пусть $t_0 > 0$ первый момент времени, когда происходит
-    переключение управления, т.е. $\norm{p(t_0)} = 2\norm{q(t_0)}$ и функция
-    $r(t) = h(\norm{p(t)} - 2 \norm{q(t)})$, $t > 0$ изменяет значение при
-    переходе через точку $t_0$. (Если таких точек нет, то выполнение неравенства
-    \eqref{10} очевидно). Тогда из \eqref{8} следует, что 
-    
-    \begin{gather*}
-        (\norm{p}^2 + \gamma \norm{q}^2)_{t = t_0} \le (\norm{p}^2 +
-        \norm{q}^2)_{t = t_0} < \norm{g(0)}^2 \le \nu \gamma, 
-    \end{gather*}
-    если $r(t) = 0$, $0 < t < t_0$. И соотвественно из \eqref{9}:
-    \begin{gather*}
-        (\norm{p}^2 + \gamma \norm{q}^2)_{t=t_1} \le (\norm{p}^2 + \gamma
-        \norm{q}^2)_{t=t_0} \le \norm{g(0)}^2 < \nu \gamma,
-    \end{gather*}
-    если $r(t) = 1$, $t_0 < t < t_1$\\
-    В случае, если $r(t) = 0$, $t_0 < t < t_1$, то в силу \eqref{8} 
-    \begin{gather*}
-        (\norm{p}^2 + \gamma \norm{q}^2)_{t=t_1} = \frac{4 +
-        \gamma}{5}(\norm{p}^2 + \norm{q}^2)_{t = t_1} < \\*
-        \frac{4 + \gamma}{5}(\norm{p}^2 + \norm{q}^2)_{t=t_0} = (\norm{p}^2 +
-        \gamma \norm{q}^2)_{t=t_0} < \nu \gamma
-    \end{gather*}
-    Кроме того, на указанном промежутке также справедливо неравенство 
-
-    \begin{equation}
-        (\norm{p}^2 + \norm{q}^2)(t) < (\norm{p}^2 + \norm{q}^2)(t_0) \le
-        \frac{1}{\gamma}(\norm{p}^2 + \gamma \norm{q}^2)(t_0) \le \nu
-    \end{equation}
-    
 %\end{proof}
+
+\subsection{Конечномерная стабилизация}
+
+Выясним условия, выполнение которых гарантирует, что нулевое состояние
+$\varphi_s = 0$ является экспоненциально устойчивой особой точкой динамической
+системы \eqref{operator_fluct}\\
+
+На основании леммы 2, справедливо следующая оценка
+
+\begin{equation}\label{lemma2_mark}
+    \norm{Pv}^2_{L^2(\omega)} \le \gamma \norm{Pv}^2, \ \forall v \in H
+\end{equation}
+
+Пусть $\Omega > 0$. Выберим параметры $\sigma$, $r_0$, $m$ такие, что
+$\norm{g(t)}$ ограничена на $[0, +\infty)$. Здесь $g(t) = \varphi(t)e^{\sigma t}$, 
+$\varphi$ - решение задачи \eqref{operator_fluct}. Функция $g$ удовлетворяет 
+условиям
+
+\begin{gather}\label{g_fluct}
+    g' + \nu Ag - \sigma g + B(g, U) + B(U + ge^{-\sigma t}, g) = \Lambda(g)\\*
+    g(0) = \varphi_0
+\end{gather}
+
+Обозначим $p = Pg$, $q = Qg$. Пусть на некотором интервале $(t_0, t_1)$
+справедливо неравенство $\norm{p(t)} \le 2 \norm{q(t)}$, т.е. $\Lambda(g) = 0$.
+Умножим скалярно первое уравнение в \eqref{g_fluct} на $g$ и заметим, что $(B(U
++ g \exp{-\sigma t}, g), g) = -(U_x, g^2) / 2$. Тогда
+
+\begin{gather*}
+    \frac{1}{2}\frac{d}{dt}\norm{g}^2 + \norm{g_x}^2 = \sigma \norm{g}^2 -
+    \frac{1}{2}(U_x, g^2) \le C_1\norm{g}^2
+\end{gather*}
+
+Здесь $C_1 = \sigma + \frac{1}{2}\norm{U_{x}}_{L^2(\Sigma)}$. На рассматриваемом 
+интервале справделиво следующая оценка
+
+\begin{gather*}
+    \norm{g}^2 = \norm{p}^2 + \norm{q}^2 < 5\norm{q}^2 < 5\lambda^{-1}_{m +
+    1}\norm{q_x} \le 5 \lambda^{-1}_{m + 1}\norm{g_x}^2
+\end{gather*}
+
+Следовательно, если 
+
+\begin{equation}
+    10C_1 \lambda_{m + 1}^{-1} < \nu
+\end{equation}
+
+то справедливо неравенство
+
+\begin{equation}
+    \frac{d}{dt}\norm{g}^2 + \nu \norm{g_x} < 0
+\end{equation}
+
+Тогда следует
+
+\begin{equation}\label{8}
+    \norm{g(t_1)} < \norm{g(t_0)}
+\end{equation}
+
+Поэтому $\norm{g(t_1)} < \norm{g(t_0)}$\\
+
+%Далее 
+%\begin{gather*}
+    %\frac{1}{2}\frac{d}{dt}\norm{q}^2 + \nu \norm{q_x}^2 - \sigma \norm{q}^2 +
+    %((U g)_x, q) + \frac{1}{2}e^{-\sigma t}((g^2)_x, q) = 0\\
+    %\norm{g_x}^2 = \norm{p_x}^2 + \norm{q_x}^2 \le \lambda_{m} \norm{p}^2 +
+    %\norm{q_x}^2 \le 5\norm{q_x}^2\\
+    %|(U g)_x, q)| \le C_0 \norm{g} \norm{q_x} < 5 C_0 \lambda^{-1}_{m + 1}
+    %\norm{q_x}^2, \ C_0 = max|U|\\
+    %|((g^2)_x, q)| = |(g^2, q_x)| \le \norm{g} \norm{g_x} \norm{q_x}
+%\end{gather*}
+
+Пусть теперь $\norm{p(t)} \ge 2 \norm{q(t)}, \ t \in (t_0, t_1)$, т.е.
+стабилизирующее управление включено. В этом случае, учитывая
+\eqref{lemma2_mark}, получаем
+
+\begin{gather*}
+    \gamma |(p, q)_{L^2(\omega)}| \le \norm{p} \norm{q} \le \frac{1}{2}
+    \norm{p}^2\\
+    (p, p + \gamma q)_{L^2(\omega)} = \norm{p}^2_{L^2(\omega)} + \gamma(p,
+    q)_{L^2(\omega)} \ge \frac{\gamma}{2}\norm{p}^2.
+\end{gather*}
+
+Умножим скалярно первое уравнение в \eqref{g_fluct} на $p + \gamma q$ и
+воспользуемся последним неравенством. Тогда
+
+\begin{gather*}
+    %\frac{1}{2} \frac{d}{dt} [ \norm{p}^2 + \nu [ \norm{p_x}^2 - \sigma [
+    %\norm{p}^2 + \gamma \norm{q}^2] ]  + ( (U g)_x, p + \gamma q) + \gamma
+%\norm{q} \\* + \gamma\norm{q_x}^2] + \frac{1}{2} e^{-\sigma t} ( (g^2)_x, p +
+%\sigma q) + \frac{r_0 \gamma}{2} \norm{p}^2 \le 0\\
+%|( (U g)_x, p)| \le C_0 \norm{p_x} \norm{g} \le \frac{3}{2} C_0 \norm{p}
+%\norm{p_x} \le \frac{\nu}{2} \norm{p_x}^2 + \frac{1}{2\nu}(\frac{3}{2}C_0)^2
+%\norm{p}^2
+    \frac{1}{2} \frac{d}{dt} (\norm{p}^2 + \gamma \norm{q}^2) + \nu
+    (\norm{p_x}^2 + \gamma \norm{q_x}^2) - \sigma (\norm{p}^2 + \gamma
+    \norm{q}^2) + \frac{r\gamma}{2} \norm{p}^2 \le \\
+    (Ug, p_x + \gamma q_x) +
+    \frac{1}{2} \exp{-\sigma t}(g^2, p_x + \gamma q_x)
+\end{gather*}
+
+Для оценки правой части используем неравенства: $\norm{g} \le \norm{p} + 
+\norm{q} \le \frac{3}{2} \norm{p}$
+
+\begin{gather*}
+    |((U g)_x, p_x + \gamma q_x)| \le \frac{3}{2} C_0 \norm{p}(\norm{p_x} +
+    \gamma \norm{q_x}) \le \\
+    \frac{\nu}{2} (\norm{p_x}^2 + \gamma \norm{q_x}^2) +
+    \frac{9C_0^2}{8\nu}(1 + \gamma)\norm{p}^2\\
+    (g^2, p_x + \gamma q_x) = (1 - \gamma)(g^2, p_x) = (1 - \gamma)((q^2, p_x) -
+    (p^2, q_x)) \le \\
+    \norm{p_x}\norm{q_x}(\norm{p} + \norm{q}) \le \frac{1}{\gamma}(\norm{p_x}^2
+    + \gamma \norm{q_x}^2)\sqrt{\norm{p}^2 + \gamma \norm{q}^2}
+\end{gather*}
+
+Следовательно
+
+\begin{gather*}
+    \frac{d}{dt}(\norm{p}^2 + \gamma \norm{q}^2) + (\norm{p_x}^2 + \gamma
+    \norm{q_x}^2)(\nu - \frac{1}{\nu}\sqrt{\norm{p}^2 + \gamma \norm{q}^2} + \\
+    (r \gamma - C_2)\norm{p}^2 \le 0
+\end{gather*}
+
+Здесь $C_2 = (2 + \gamma)\sigma - \frac{9C_0^2}{4\nu}(1 + \gamma)$. Если
+параметр $r$ выбрать так, что 
+
+\begin{equation}
+    r\gamma \ge C_2
+\end{equation}
+
+то справедливо неравенство
+
+\begin{equation}
+    \frac{d}{dt}(\norm{p}^2 + \gamma{q}^2) + (\norm{p_x}^2 + \norm{q_x}^2)(\nu -
+    \frac{1}{\nu}\sqrt{\norm{p}^2+ \gamma \norm{q}^2} \le 0
+\end{equation}
+
+Поэтому $(\norm{p}^2 + \gamma \norm{q}^2)|_{t=t_1} < (\gamma \nu)^2$, если
+$(\norm{p}^2 + \gamma \norm{q}^2)|_{t=t_0} < (\gamma \nu)^2$

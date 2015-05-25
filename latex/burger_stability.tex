@@ -1,97 +1,108 @@
 \section{Стабилизация неустойчивых стационарных решений уравнения Бюргерса}
 \vspace{1em}
 
-Рассмотрим вязкое уравнение Бюргерса:
+\subsection{Постановка задачи}
+
+Рассмотрим уравнение Бюргерса с вязкостью $\nu > 0$ на интервале $\Omega = (0,
+1) \subset \mathbb{R}$
 
 \begin{equation}\label{burger}
-  u_t = u_{xx} - u_x u, \quad 0 < x < 1, \quad t > 0
+    u_t - \nu u_{xx} + u_x u = f + y, \ u|_{\Gamma} = u_b, \quad t > 0
 \end{equation}
 
-с начальным и граничными условиями:
+Функция $f = f(x)$, $x \in \Omega$ является заданной, а функция $y = y(x, u)$
+рассматривается как управление, носитель которого при фиксированном $t > 0$
+содержиться в $\bar{\omega}$, где $\bar{\omega}$ - заданная подобласть $\Omega$.
+Через $\Gamma = \{0, 1\}$ обозначена граница $\Omega$, $u_b \in \mathbb{R}^2$\\
 
-\begin{gather}\label{cond}
-  u(0, t) = w_1(t), \\*
-  u(1, t) = w_2(t), \\*
-  u(x, 0) = u_{0}(x) \in L^2(0, 1). \nonumber
+Пусть $U$ - стационарное решение \eqref{burger}, то есть
+
+\begin{equation}\label{stationary_sol}
+    -\nu U_{xx} + U U_x = f, \ U|_{\Gamma} = u_b
+\end{equation}
+
+и $U$ является неустойчивой особой точкой динамической системы, порождаемой
+эволюционным уравнение \eqref{burger} в фазовом пространстве $H = L^2(\Omega)$.
+Задача стабилизации состоит в следующем:\\
+
+\textit{Для заданного} $\sigma > 0$ 
+\textit{требуется найти оператор управления с обратнойсвязью} 
+$y = \Lambda(u - U) : H \to H$ \textit{такой, что} $\mathbf{supp}y(\cdot,t) \subset 
+\bar{\omega}$ \textit{и решение замкнутой системы}
+
+\begin{equation}
+    u_t - \nu u_xx + u u_xx = f + \Lambda(u - U), \ u|_{\Gamma} = u_b,
+    \ t > 0, \quad u|_{t=0} = u_0
+\end{equation}
+
+\textit{сходится к} $U$ \textit{с заданной скоростью} $\sigma$
+
+\begin{equation}
+    \norm{u(t) - U}_{L^2(\Omega)} \le C e^{-\sigma t} \ \text{при } t
+    \to +\infty
+\end{equation}
+
+\textit{если величина} $\norm{u_0 - U}_{L^2(\Omega)}$ \textit{достаточно мала}\\
+
+Пусть $\varphi = u - U$, тогда
+
+\begin{gather}\label{fluct}
+    \varphi_t - \nu \varphi_{xx} + \varphi U_x + (\varphi + U)\varphi_x =
+    \Lambda(\varphi)\\* 
+    \varphi|_{\Gamma} = 0, \ t > 0\\*
+    \varphi|_{t = 0} = \varphi_0 = u_0 - U
 \end{gather}
 
-\begin{remark}
-Уравнение Бюргерса обычно изучается в форме $u_t = \epsilon u_{xx} - u_xu$, в этой работе рассматривается система с $\epsilon = 1$. Все результаты могут быть получены для любого $\epsilon \ne 1$
-\end{remark}
+Требуется чтобы $\norm{u(t) - U}_{L^2(\Omega)} \le C e^{-\sigma t}$ при $t \to
++\infty$, если мала норма $\norm{\varphi_0}_{L^2(\Omega)}$
+
+\subsection{Неустойчивость стационарных решений shock-like}
 
 Рассмотрим семейство стационарных решений shock-like
 
 \begin{equation}\label{shock_like}
-  U(x) = -2\sigma\tanh{(\sigma(x - \frac{1}{2}))},
+    U(x) = -2\sigma\tanh{(\sigma(x - \frac{1}{2}))}, \ \text{где } \sigma \ge 0
 \end{equation}
-
-где параметр $\sigma \ge 0$.
 
 \begin{figure}[H]
-  \centering
-  \includegraphics[width=4in]{fig1}
-  \caption{Три примера $U(x)$ при разных $\sigma$}
+    \centering
+    \includegraphics[width=4in]{fig1}
+    \caption{$U(x)$ при разных $\sigma$}
 \end{figure}
 
-В качестве \eqref{cond} возмем
-
-\begin{gather}\label{cond2}
-  w_1(t) = U(0) \\*
-  w_2(t) = U(1)
-\end{gather}
-
-Введем новое обозначение
-
-\begin{equation}
-  \hat{u}(x, t) = u(x, t) - U(x)
-\end{equation}
-
-Тогда, уравнение \eqref{burger} перепишется через новую переменную $\hat{u}$
-
-\begin{equation}\label{fluct}
-    \hat{u}_t = \hat{u}_{xx} - U(x)\hat{u}_x - U'(x)\hat{u} - \hat{u}_x\hat{u}
-\end{equation}
-
-Начальные и граничные условия перепишутся в виде
-
-\begin{gather}\label{fluct_cond}
-  \hat{u}(0, t) = 0 \\*
-  \hat{u}(1, t) = 0 \\*
-  \hat{u}(x, 0) = u_{0}(x) - U(x) \in L^2(0, 1). \nonumber
-\end{gather}
-
-\subsection{Неустойчивость shock-like стационарного решения}
-
-Для изучения устойчивости системы \eqref{fluct} - \eqref{fluct_cond}, мы линеаризуем её
+Для изучения устойчивости системы \eqref{fluct}, мы линеаризуем её
 
 \begin{gather}\label{linearized}
-  \theta_t = \theta_{xx} + 2 \sigma (\tanh(\sigma(x - \frac{1}{2}))\theta)_x \\*
-  \theta(0, t) = \theta(1, t) = 0,
+    \theta_t = \theta_{xx} + 2 \sigma (\tanh(\sigma(x - \frac{1}{2}))\theta)_x \\*
+    \theta(0, t) = \theta(1, t) = 0,
 \end{gather}
 
-где $\theta(x, t)$ линеаризация $\hat{u}$. \eqref{linearized} - уравнение конвенкции-диффузии-реакции. Для простоты изучения устойчивости, мы избавимся от конвекционого члена используя преобразование $\zeta(x, t) = G(x)\theta(x, t)$, где 
+где $\theta(x, t)$ - решение уравнения \eqref{linearized}, которое является
+линеаризацией \eqref{fluct}. Заметим что \eqref{linearized} является  уравнение 
+конвенкции-диффузии-реакции. Для простоты изучения устойчивости, мы избавимся 
+от конвекционого члена используя преобразование 
+$\zeta(x, t) = G(x)\theta(x, t)$, где 
 
 \begin{equation}
-  G(x) = \frac{\cosh(\sigma(x - \frac{1}{2}))}{\cosh(\frac{\sigma}{2})}
+    G(x) = \frac{\cosh(\sigma(x - \frac{1}{2}))}{\cosh(\frac{\sigma}{2})}
 \end{equation} 
 
 Имеем 
 
 \begin{gather} \label{transf_linear}
-  \zeta_t = \zeta_{xx} + \sigma^2 \left( \frac{2}{\cosh^2(\sigma(x - \frac{1}{2}))} - 1 \right) \zeta \\* 
-  \zeta(0) = \zeta(1) = 0 
+    \zeta_t = \zeta_{xx} + \sigma^2 \left( \frac{2}{\cosh^2(\sigma(x - \frac{1}{2}))} - 1 \right) \zeta \\* 
+    \zeta(0) = \zeta(1) = 0 
 \end{gather}
 
-Для $\sigma = 0$ система нейтрально устойчива. Для $\sigma > 0$,  реакционный член в \eqref{transf_linear} также является неустойчивым в окрестности $x = \frac{1}{2}$ (Рис 2.)
+Для $\sigma = 0$ система нейтрально устойчива. Для $\sigma > 0$, член 
+$\left(\frac{2}{\cosh^2(\sigma(x - \frac{1}{2}))} - 1 \right)$  в 
+\eqref{transf_linear} также является неустойчивым в окрестности 
+$x = \frac{1}{2}$ (Рис 2.), т.е. положительность этого члена ведет к
+неустойчивости системы
 
 
 \begin{figure}[H]
-  \centering
-  \includegraphics[width=4in]{fig2}
-  \caption{Значение реакционного члена в \eqref{transf_linear}}
+    \centering
+    \includegraphics[width=4in]{fig2}
+    \caption{Значение реакционного члена в \eqref{transf_linear}}
 \end{figure}
-
-
-
-
-
