@@ -47,7 +47,7 @@ $C([0, T];X))$ обозначается пространство $L^p$ (соот
             1, & \mu > 0, \\
             [0, 1], & \mu = 0
         \end{matrix} \right.
-    \end{matrix}, \
+    \end{matrix} \quad
     \begin{matrix}
         \chi_{\omega}(x) & =
         & \left\{
@@ -108,7 +108,7 @@ $\varphi$ - решение задачи \eqref{operator_fluct}. Функция $
 Обозначим $p = Pg$, $q = Qg$. Пусть на некотором интервале $(t_0, t_1)$
 справедливо неравенство $\norm{p(t)} \le 2 \norm{q(t)}$, т.е. $\Lambda(g) = 0$.
 Умножим скалярно первое уравнение в \eqref{g_fluct} на $g$ и заметим, что $(B(U
-+ g \exp{-\sigma t}, g), g) = -(U_x, g^2) / 2$. Тогда
++ g e^{-\sigma t}, g), g) = -(U_x, g^2) / 2$. Тогда
 
 \begin{gather*}
     \frac{1}{2}\frac{d}{dt}\norm{g}^2 + \norm{g_x}^2 = \sigma \norm{g}^2 -
@@ -180,7 +180,7 @@ $\varphi$ - решение задачи \eqref{operator_fluct}. Функция $
     (\norm{p_x}^2 + \gamma \norm{q_x}^2) - \sigma (\norm{p}^2 + \gamma
     \norm{q}^2) + \frac{r\gamma}{2} \norm{p}^2 \le \\
     (Ug, p_x + \gamma q_x) +
-    \frac{1}{2} \exp{-\sigma t}(g^2, p_x + \gamma q_x)
+    \frac{1}{2} e^{-\sigma t}(g^2, p_x + \gamma q_x)
 \end{gather*}
 
 Для оценки правой части используем неравенства: $\norm{g} \le \norm{p} + 

@@ -1,27 +1,24 @@
 \subsection{Стабилизация конечномерным локальным управлением с обратной связью}
+\vspace{1em}
 
 Рассмотрим систему
 
 \begin{equation}\label{ndif_form}
-    u_t = u_{xx} + \alpha u, \ 0 < x < 1, \ t > 0
+    u_t = u_{xx} + \alpha u, \ 0 < x < 1, \ t > 0.
 \end{equation}
-
 с начальным и граничными условиями
-
 \begin{gather}
     u(0, t) = u(1, t) = 0, \\*
     u(x, 0) = u_{0}(x) \in H .\nonumber
 \end{gather}
 
-Здесь и далее $H = L_2(0, 1)$, $V = H^1_0(0, 1)$.\\
 Как показано в \S 1, в случае, когда $\alpha > \pi^2$, нулевое решение уравнения 
 \eqref{ndif_form} неустойчиво.
 Задача стабилизации параболического уравнения, заданного в ограниченной области,
 заключается в построении такого оператора управления, чтобы решение смешанной 
 краевой задачи стремилось (при $t \rightarrow \infty$) к заданному стационарному 
-решению с предписанной скоростью $\exp (-\delta_0t)$.
+решению с предписанной скоростью $e^{(-\delta_0t)}$.
 
-\subsection{Конструкция оператора управления}
 Сформулируем задачу стабилизации неустойчивого нулевого решения уравнения 
 \eqref{ndif_form} за счет локального управления.\\
 
@@ -31,49 +28,45 @@ $\bar{\omega} \subset (0, 1)$.Задача стабилизации за сче�
 $\mathcal{R} : H \rightarrow H$ такого, что
 
 \begin{enumerate}
-    \item $\forall z \in H \ \supp \operator{z} \subset \omega$,
+    \item $\forall z \in H \ \mathbf{supp} \ \operator{z} \subset \omega$,
     \item $\dim \operator{(H)} < +\infty$.
 \end{enumerate}
-
-И при этом решение задачи
-
+и при этом решение задачи
 \begin{gather}
-    u_t - u_{xx} - \alpha u = \operator{u} \nonumber\\
-    u(0, t) = u(1, t) = 0, \ u(x, 0) = u_0 \nonumber
+    u_t - u_{xx} - \alpha u = \operator{u}. \nonumber\\
+    u(0, t) = u(1, t) = 0, \ u(x, 0) = u_0. \nonumber
 \end{gather}
+экспоненциально стремится к нулю при $t \rightarrow + \infty$.
 
-экспоненциально стремится к нулю при $t \rightarrow + \infty$\\
-
-\vspace{2em}
+\subsection{Конструкция оператора управления}
+\vspace{1em}
 
 Заметим, что функции
 
 \begin{equation}\label{basis}
     w_j = w_j(x) = \sqrt{2}\sin{(\pi j x)}, \ x \in (0, 1), \ j=1, 2, ..
 \end{equation}
-
 образуют базис в $H$ и в $V$, причем в $H$ базиc ортонормирован.\\
 Через $H_m$ обозначим подпространство в $H$, образованное первыми $m$ функциями 
 из \eqref{basis}.\\
 
 Далее рассмотрим следующие операторы проектирования
 
-$$P_m : H \rightarrow H_m, \ Q_m : H \rightarrow H_m^{\perp}$$
+$$P_m : H \rightarrow H_m, \ Q_m : H \rightarrow H_m^{\perp}.$$
 
 \begin{equation}
-    P_m u = \sum \limits_{j=1}^{m} {(u, w_j) w_j}
+    P_m u = \sum \limits_{j=1}^{m} {(u, w_j) w_j}.
 \end{equation}
 
 \begin{equation}
-    Q_m u = (I - P_m)u(x) = \sum \limits_{j=m + 1}^{\infty} {(u, w_j) w_j}
+    Q_m u = (I - P_m)u(x) = \sum \limits_{j=m + 1}^{\infty} {(u, w_j) w_j}.
 \end{equation}
 
 В качестве оператора стабилизиции будем рассматривать следующий конечномерный
 оператор
 
-$$\operator{z} = -r\chi_{\omega}P_mz, \ r > 0$$
-
-Здесь
+$$\operator{z} = -r\chi_{\omega}P_mz, \ r > 0,$$
+здесь
 \begin{gather*}
     \begin{matrix}
         \chi_{\omega}(x) & =
@@ -90,43 +83,42 @@ $m \in \mathbb{N}$, $r = r_m > 0$, при которых $\operator{}$ обес�
 стабилизацию неустойчивого решения.
 
 \subsection{Теоретическое обоснование стабилизации}
+\vspace{1em}
 
 Рассмотрим уравнение
-
-\begin{equation}\label{control}
-    u_t - u_{xx} - \alpha u = -r\chi_{\omega}\varphi,
-\end{equation}
-
-здесь $\varphi = P_mu$. Домножим скалярно обе части \eqref{control} на
+\begin{gather}\label{control}
+    u_t - u_{xx} - \alpha u = -r\chi_{\omega}\varphi,\\*
+    u|_{x = 0;1} = 0.
+\end{gather}
+Здесь $\varphi = P_mu$. Домножим скалярно обе части \eqref{control} на
 $\varphi$. Учтем, что
 
 \begin{gather*}
     (u, \varphi) = \norm{\varphi}^2, \\*
+\end{gather*}
+
+\begin{gather*}
     (u_t, \varphi) = (\varphi_t, \varphi) = \frac{1}{2} \frac{d}{dt}
     \norm{\varphi}^2, \\*
     (u_{xx}, \varphi) = (\varphi_{xx}, \varphi) = -(\varphi_x, \varphi_x) = -
     \norm{\varphi_x}^2, \\*
-    (\chi_{\omega}\varphi, \varphi) = \norm{\varphi}^2_{\omega}, 
+    (\chi_{\omega}\varphi, \varphi) = \norm{\varphi}^2_{\omega}.
 \end{gather*}
-
-тогда
-
+Тогда
 \begin{equation*}
     \frac{1}{2} \frac{d}{dt} \norm{\varphi}^2  + \norm{\varphi_x}^2 - 
     \alpha \norm{\varphi}^2 + r \norm{\varphi}^2_{\omega} = 0.
 \end{equation*}
-
 Воспользуемся неравенством Пуанкаре-Фридрихса-Стеклова
 
 \begin{equation}
-    \norm{\varphi}^2 \le \frac{1}{\pi^2} \norm{\varphi_x}^2
+    \norm{\varphi}^2 \le \frac{1}{\pi^2} \norm{\varphi_x}^2.
 \end{equation}
-
 В итоге получаем
 
 \begin{equation}
     \frac{1}{2} \frac{d}{dt} \norm{\varphi}^2 + \pi^2 \norm{\varphi}^2 - 
-    \alpha \norm{\varphi}^2 + r \norm{\varphi}^2_{\omega} \le 0
+    \alpha \norm{\varphi}^2 + r \norm{\varphi}^2_{\omega} \le 0.
 \end{equation}
 
 Приведём полезные для доказательства стабилизируемости леммы.
@@ -143,31 +135,31 @@ $\varphi$. Учтем, что
     тождество ввида
     
     \begin{equation}\label{sum_func}
-        \sum \limits_{j = 1}^m{c_j w_j(x)} = 0, \ x \in \omega
+        \sum \limits_{j = 1}^m{c_j w_j(x)} = 0, \ x \in \omega.
     \end{equation}
-
-    выполняется только при $c_1 = c_2 = ... = c_m = 0$\\
+    выполняется только при $c_1 = c_2 = ... = c_m = 0.$\\
 
     Пусть $D$ оператор дифференцирования, действующий в пространстве бесконечно 
     дифференцируемых функций.
     Заметим, что $D^2 w_j = -(\pi k)^2 w_j$. Подействуем  на \eqref{sum_func} 
-    оператором $D$ $2l$ раз
+    оператором $D^{2l}$ раз
 
     \begin{equation*}
-        c_m (\pi m)^{2l} w_m + \sum \limits_{j = 1}^{m - 1}{c_j (\pi j)^{2l} w_j(x)} = 0
+        c_m (\pi m)^{2l} w_m + \sum \limits_{j = 1}^{m - 1}{c_j (\pi j)^{2l}
+        w_j(x)} = 0.
     \end{equation*}
 
     Разделим на $(\pi m)^{2l}$. Тогда
 
     \begin{equation*}
-        c_m w_m + \sum \limits_{j = 1}^{m - 1}{c_j \left(\frac{j}{m}\right)^{2l} w_j(x)}
+        c_m w_m + \sum \limits_{j = 1}^{m - 1}{c_j \left(\frac{j}{m}\right)^{2l}
+        w_j(x)}.
     \end{equation*}
-
     Заметим, что при $l \rightarrow +\infty$, правое слагаемое стремится к 0.\\
     Следовательно,
 
     \begin{equation*}
-        c_m w_m = 0
+        c_m w_m = 0.
     \end{equation*}
 
     Функция $w_m(x) = \sin{(\pi m x)}$ не может принимать нулевые значения на 
@@ -186,10 +178,9 @@ $\varphi$. Учтем, что
 \begin{lemma}\label{main_lemma}
     \begin{equation}
         \gamma = \inf{ \left\{ \norm{z}^2_{\omega} : z = P_mu,\enskip u \in H, 
-        \enskip \norm{z} = 1 \ \right\} } > 0,
+        \enskip \norm{z} = 1 \ \right\} } > 0.
     \end{equation}
-
-    \par здесь $\norm{z}^2_{\omega} = \int\limits_{\omega}{z^2dx}$.
+    Здесь $\norm{z}^2_{\omega} = \int\limits_{\omega}{z^2dx}$.
 \end{lemma}
 
 \begin{proof}
@@ -198,9 +189,8 @@ $\varphi$. Учтем, что
 
     \begin{equation}
        f(c_1, c_2, ..., c_m) = \int \limits_{\omega} {(\sum\limits_1^m {c_jw_j})^2}
-       \text{, где } c_1^2 + c_2^2 + ... + c^2_m = 1
+       \text{, где } c_1^2 + c_2^2 + ... + c^2_m = 1.
     \end{equation}
-
     По теореме Вейштрасса, существует функция 
     $z_0 = \sum\limits_1^m {c_j^0 w_j} \in H_m$, такая, что
 
@@ -211,7 +201,7 @@ $\varphi$. Учтем, что
 
     Заметим, что из линейной независимости 
     $\left\{ \omega_j \right\}^m_1$(по лемме \ref{util_lemma}) следует 
-    положительность $\gamma$
+    положительность $\gamma$.
 
 \end{proof}
 
@@ -221,11 +211,9 @@ $\varphi$. Учтем, что
 Выберем число $m \in \mathbb{N}$ так, что
 
 \begin{equation}
-    q = [(\pi(m + 1))^2 - \alpha - 1] > 0
+    q = [(\pi(m + 1))^2 - \alpha - 1] > 0.
 \end{equation}
-
 На основании леммы \ref{main_lemma} справедлива следующая оценка
-
 \begin{equation*}
     \frac{1}{2} \frac{d}{dt} \norm{\varphi}^2 + (\pi^2 - \alpha + r\gamma) 
     \norm{\varphi}^2 \le 0.
@@ -239,7 +227,6 @@ $\beta = \pi^2 - \alpha + r\gamma > 0$.
 \begin{equation}\label{phi_mark}
     \norm{\varphi}^2 \le \norm{\varphi_0}^2 e^{-2\beta t},
 \end{equation}
-
 здесь $\varphi_0 = P_m u_0$
 \vspace{2em}
 
@@ -252,20 +239,18 @@ $\beta = \pi^2 - \alpha + r\gamma > 0$.
     (u_{xx}, \psi) = (\psi_{xx}, \psi) = -(\psi_x, \psi_x) = -
     \norm{\psi_x}^2,\\*
     (\chi_{\omega}\varphi, \psi) = \int_{\omega}{\varphi \psi} \le
-    \norm{\varphi} \norm{\psi}
+    \norm{\varphi} \norm{\psi}.
 \end{gather*}
-
 С помощью неравенства Пуанкаре-Фридрихса-Стеклова получаем оценку
-
 \begin{equation}
-    \norm{\psi}^2 \le (\frac{1}{\pi(m + 1)})^2 \norm{\psi_x}^2,
+    \norm{\psi}^2 \le (\frac{1}{\pi(m + 1)})^2 \norm{\psi_x}^2.
 \end{equation}
 
-тогда
+Тогда
 
 \begin{equation}\label{v2}
     \frac{1}{2} \frac{d}{dt} \norm{\psi}^2 + (\pi(m + 1))^2 \norm{\psi}^2 - 
-    \alpha \norm{\psi}^2 \le r \norm{\varphi} \norm{\psi}
+    \alpha \norm{\psi}^2 \le r \norm{\varphi} \norm{\psi}.
 \end{equation}
 
 Рассмотрим подробнее \eqref{v2}.\\
@@ -275,21 +260,18 @@ $\beta = \pi^2 - \alpha + r\gamma > 0$.
     \norm{\varphi} \norm{\psi} \le (\frac{\varepsilon \norm{\psi}^2}{2} + 
     \frac{\norm{\varphi}^2}{2 \varepsilon}),
 \end{equation*}
-
 здесь $\varepsilon = \frac{2}{r}$. Из \eqref{v2} получаем неравенства
 
 \begin{equation*}
     \frac{1}{2} \frac{d}{dt} \norm{\psi}^2 + (\pi(m + 1))^2 \norm{\psi}^2 - 
     \alpha \norm{\psi}^2 \le r (\frac{\varepsilon \norm{\psi}^2}{2} + 
-    \frac{\norm{\varphi}^2}{2 \varepsilon})
+    \frac{\norm{\varphi}^2}{2 \varepsilon}).
 \end{equation*}
-
 \begin{equation*}
     \frac{1}{2} \frac{d}{dt} \norm{\psi}^2  + [(\pi(m + 1))^2 - \alpha - 1] 
     \norm{\psi}^2 \le \frac{r^2}{4}\norm{\varphi}^2 \le 
     \frac{r^2}{4}\norm{\varphi_0}^2 e^{-2\beta t}.
 \end{equation*}
-
 \begin{equation}
     \frac{1}{2} \frac{d}{dt} \norm{\psi}^2 + q\norm{\psi}^2 \le 
     \frac{r^2}{4}\norm{\varphi_0}^2 e^{-2\beta t}.
@@ -297,20 +279,19 @@ $\beta = \pi^2 - \alpha + r\gamma > 0$.
 
 Напомним, что $q > 0$ за счет выбора числа гармоник в операторе $P_m$.
 Домножим обе части неравенства на $2e^{2qt}$ и проинтегрируем
-
 \begin{gather*}
     \int\limits_0^t{d(e^{2q\tau}} \norm{\psi}^2) \le 
     \frac{r^2}{2} \norm{\varphi_0}^2 \frac{1}{2q - 2\beta} 
     \int\limits_0^t {e^{(2q -2\beta) \tau} d[(2q -2\beta) \tau]}\\*
     e^{2qt} \norm{\psi}^2 - \norm{\psi_0}^2 \le \frac{r^2}{2}
-    \norm{\varphi_0}^2 \frac{1}{2q - 2\beta} e^{(2q -2\beta)t}
+    \norm{\varphi_0}^2 \frac{1}{2q - 2\beta} e^{(2q -2\beta)t}.
 \end{gather*}
 
 Следовательно
 
 \begin{equation}\label{psi_mark}
     \norm{\psi}^2 \le \norm{\psi_0}^2 e^{-2qt} + \frac{r^2}{2} 
-    \norm{\varphi_0}^2 \frac{1}{2(q - \beta)} e^{-2\beta t}
+    \norm{\varphi_0}^2 \frac{1}{2(q - \beta)} e^{-2\beta t}.
 \end{equation}
 
 Известно, что $u = \varphi + \psi$. Воспользуемся оценками норм $\psi$ и 
