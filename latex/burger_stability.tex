@@ -7,7 +7,7 @@
 1) \subset \mathbb{R}$
 
 \begin{equation}\label{burger}
-    u_t - \nu u_{xx} + u_x u = f + y, \ u|_{\Gamma} = u_b, \quad t > 0
+    u_t - \nu u_{xx} + u_x u = f + y, \ u|_{\Gamma} = u_b, \quad t > 0.
 \end{equation}
 
 Функция $f = f(x)$, $x \in \Omega$ является заданной, а функция $y = y(x, u)$
@@ -18,10 +18,9 @@
 Пусть $U$ - стационарное решение \eqref{burger}, то есть
 
 \begin{equation}\label{stationary_sol}
-    -\nu U_{xx} + U U_x = f, \ U|_{\Gamma} = u_b
+    -\nu U_{xx} + U U_x = f, \ U|_{\Gamma} = u_b,
 \end{equation}
-
-и $U$ является неустойчивой особой точкой динамической системы, порождаемой
+и функция $U$ является неустойчивой особой точкой динамической системы, порождаемой
 эволюционным уравнение \eqref{burger} в фазовом пространстве $H = L^2(\Omega)$.
 Задача стабилизации состоит в следующем:\\
 
@@ -34,34 +33,32 @@ $y = \Lambda(u - U) : H \to H$ \textit{такой, что} $\mathbf{supp} \ y (\
     u_t - \nu u_xx + u u_xx = f + \Lambda(u - U), \ u|_{\Gamma} = u_b,
     \ t > 0, \quad u|_{t=0} = u_0
 \end{equation}
-
 \textit{сходится к} $U$ \textit{с заданной скоростью} $\sigma$
 
 \begin{equation}
     \norm{u(t) - U}_{L^2(\Omega)} \le C e^{-\sigma t} \ \text{при } t
-    \to +\infty
+    \to +\infty,
 \end{equation}
-
 \textit{если величина} $\norm{u_0 - U}_{L^2(\Omega)}$ \textit{достаточно мала}\\
 
 Пусть $\varphi = u - U$, тогда
 
 \begin{gather}\label{fluct}
     \varphi_t - \nu \varphi_{xx} + \varphi U_x + (\varphi + U)\varphi_x =
-    \Lambda(\varphi)\\* 
-    \varphi|_{\Gamma} = 0, \ t > 0\\*
-    \varphi|_{t = 0} = \varphi_0 = u_0 - U
+    \Lambda(\varphi),\\* 
+    \varphi|_{\Gamma} = 0, \ t > 0,\\*
+    \varphi|_{t = 0} = \varphi_0 = u_0 - U.
 \end{gather}
 
-Требуется чтобы $\norm{u(t) - U}_{L^2(\Omega)} \le C e^{-\sigma t}$ при $t \to
+Требуется чтобы $\norm{\varphi(t)}_{L^2(\Omega)} \le C e^{-\sigma t}$ при $t \to
 +\infty$, если мала норма $\norm{\varphi_0}_{L^2(\Omega)}$
 
 \subsection{Неустойчивость стационарных решений shock-like}
 
-Рассмотрим семейство стационарных решений shock-like
+Рассмотрим семейство стационарных решений типа shock-like
 
 \begin{equation}\label{shock_like}
-    U(x) = -2\sigma\tanh{(\sigma(x - \frac{1}{2}))}, \ \text{где } \sigma \ge 0
+    U(x) = -2\sigma\tanh{(\sigma(x - \frac{1}{2}))}, \ \text{где } \sigma \ge 0.
 \end{equation}
 
 \begin{figure}[H]
@@ -70,13 +67,13 @@ $y = \Lambda(u - U) : H \to H$ \textit{такой, что} $\mathbf{supp} \ y (\
     \caption{$U(x)$ при разных $\sigma$}
 \end{figure}
 
-Для изучения устойчивости системы \eqref{fluct}, мы линеаризуем её
+Для изучения устойчивости системы \eqref{fluct} без стабилизирующего управления, 
+мы линеаризуем её
 
 \begin{gather}\label{linearized}
-    \theta_t = \theta_{xx} + 2 \sigma (\tanh(\sigma(x - \frac{1}{2}))\theta)_x \\*
+    \theta_t = \theta_{xx} + 2 \sigma (\tanh(\sigma(x - \frac{1}{2}))\theta)_x, \\*
     \theta(0, t) = \theta(1, t) = 0,
 \end{gather}
-
 где $\theta(x, t)$ - решение уравнения \eqref{linearized}, которое является
 линеаризацией \eqref{fluct}. Заметим что \eqref{linearized} является  уравнение 
 конвенкции-диффузии-реакции. Для простоты изучения устойчивости, мы избавимся 
@@ -84,25 +81,25 @@ $y = \Lambda(u - U) : H \to H$ \textit{такой, что} $\mathbf{supp} \ y (\
 $\zeta(x, t) = G(x)\theta(x, t)$, где 
 
 \begin{equation}
-    G(x) = \frac{\cosh(\sigma(x - \frac{1}{2}))}{\cosh(\frac{\sigma}{2})}
+    G(x) = \frac{\cosh(\sigma(x - \frac{1}{2}))}{\cosh(\frac{\sigma}{2})}.
 \end{equation} 
 
 Имеем 
 
 \begin{gather} \label{transf_linear}
-    \zeta_t = \zeta_{xx} + \sigma^2 \left( \frac{2}{\cosh^2(\sigma(x - \frac{1}{2}))} - 1 \right) \zeta \\* 
-    \zeta(0) = \zeta(1) = 0 
+    \zeta_t = \zeta_{xx} + \sigma^2 \left( \frac{2}{\cosh^2(\sigma(x -
+    \frac{1}{2}))} - 1 \right) \zeta, \\* 
+    \zeta(0) = \zeta(1) = 0.
 \end{gather}
-
-Для $\sigma = 0$ система нейтрально устойчива. Для $\sigma > 0$, член 
-$\left(\frac{2}{\cosh^2(\sigma(x - \frac{1}{2}))} - 1 \right)$  в 
-\eqref{transf_linear} также является неустойчивым в окрестности 
+Для $\sigma = 0$ система нейтрально устойчива. Для $\sigma > 0$, коэффициент 
+$\mu = \left(\frac{2}{\cosh^2(\sigma(x - \frac{1}{2}))} - 1 \right)$  в 
+\eqref{transf_linear} является "неустойчивым" в окрестности 
 $x = \frac{1}{2}$ (Рис 2.), т.е. положительность этого члена ведет к
-неустойчивости системы
+неустойчивости системы.
 
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=4in]{fig2}
-    \caption{Значение реакционного члена в \eqref{transf_linear}}
+    \caption{График $\mu$ в \eqref{transf_linear}}
 \end{figure}

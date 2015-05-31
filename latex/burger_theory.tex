@@ -1,29 +1,30 @@
 \subsection{Конструкция управления}
+\vspace{1em}
+
 Для сведения начально-краевой задачи \eqref{fluct} к задаче Коши для уравнения
 с операторными коэффициентами определим отображения 
 
 \begin{equation}
-    A: V \rightarrow V^{'}, \ (Ay, z) = (y_x, z_x)
+    A: V \rightarrow V^{'}, \ (Ay, z) = (y_x, z_x),
 \end{equation}
 
 \begin{equation}
-    B: V \times V \rightarrow V^{'}, \ (B(y, z), w) = (yz_x, w)
+    B: V \times V \rightarrow V^{'}, \ (B(y, z), w) = (yz_x, w),
 \end{equation}
-
 которые выполняются для всех $y, z, w$ из пространства $V$. Для функций из
 пространства $V$ справедливы следующие неравенства, которые будут далее
 использоваться
 
 \begin{gather}
     \lambda_1 \norm{v}^2 \le \norm{v_x}^2, \ \norm{v}^4_{L^4} \le \norm{v}^2
-    \norm{v_x}^2\\
+    \norm{v_x}^2;\\
     |(B(y, z), w)| \le \norm{y}_{L^4} \norm{z_x} \norm{w}_{L^4} \le
     \norm{y}^{1/2} \norm{y_x}^{1/2} \norm{z_x} \norm{w}^{1/2}
-    \norm{w_x}^{1/2}\\
+    \norm{w_x}^{1/2};\\
     \norm{w}^2 \le \lambda^{-1}_{m + 1} \norm{w_x}^2, \ \forall w \in V \cap
-    H_m^{\bot}\\
+    H_m^{\bot}.\\
     |v(x)| \le \norm{v_x}, \ |(B(y, z), w)| \le \norm{y_x} \norm{z_x}
-    \norm{w} \text{или} \norm{y} \norm{z_x} \norm{w_x}
+    \norm{w} \text{или} \norm{y} \norm{z_x} \norm{w_x}.
 \end{gather}
 
 В дальнейшем, если $X$ - банахово пространство, то через $L^p(0, T;X)$(соотв.
@@ -33,11 +34,12 @@ $C([0, T];X))$ обозначается пространство $L^p$ (соот
 Оператор стабилизирующего управления имеет следующую структуру
 
 \begin{equation}
-    \Lambda(\varphi) = -r \chi_{\omega}h(\mu)P\varphi
+    \Lambda(\varphi) = -r \chi_{\omega}h(\mu)P\varphi.
 \end{equation}
 
 
-Здесь \\
+Здесь $\mu = \norm{P_m\varphi} - 2 \norm{Q_m\varphi}$
+
 \begin{gather*}
     \begin{matrix}
         h(\mu) & =
@@ -57,12 +59,11 @@ $C([0, T];X))$ обозначается пространство $L^p$ (соот
         \end{matrix} \right.
     \end{matrix}
 \end{gather*}
-
 $r > 0$, $\chi_{\omega}$ - характеристическая функция области $\omega$,
 $h(\mu)$ - многозначная функция Хевисайда\\
 
 Используя введенные операторы, система \eqref{fluct} стандартным образом
-переписывается $(\varphi' = \frac{d\varphi}{dt})$
+переписывается $(\varphi' = \frac{d\varphi}{dt})$ в виде
 
 \begin{gather}\label{operator_fluct}
     \varphi' + \nu A\varphi + B(\varphi, U) + B(U + \varphi, \varphi) =
@@ -70,20 +71,16 @@ $h(\mu)$ - многозначная функция Хевисайда\\
     \varphi|_{t = 0} = \varphi_0 = u_0 - U
 \end{gather}
 
-\subsection{Разрешимость задачи на конечном интервале времени}
-
 \newtheorem{theorem}{Теорема}
 
 \begin{theorem}
-    Пусть $U \in W^1_{\infty}, \ \varphi_0 \in H, \ T > 0$. 
-    Тогда $\exists$ решение задачи \eqref{operator_fluct} такое, что
-    $$\varphi \in C([0, T], H) \cap L^2(0, T, V), \ \varphi' \in L^2(0, T, V')$$
+    Пусть $U \in W^1_{\infty}(\Omega), \ \varphi_0 \in H, \ T > 0$. 
+    Тогда существует решение задачи \eqref{operator_fluct} такое, что
+    $$\varphi \in C([0, T], H) \cap L^2(0, T, V), \ \varphi' \in L^2(0, T, V').$$
 \end{theorem}
 
-%\begin{proof}
-%\end{proof}
-
 \subsection{Конечномерная стабилизация}
+\vspace{1em}
 
 Выясним условия, выполнение которых гарантирует, что нулевое состояние
 $\varphi_s = 0$ является экспоненциально устойчивой особой точкой динамической
@@ -101,8 +98,8 @@ $\varphi$ - решение задачи \eqref{operator_fluct}. Функция $
 условиям
 
 \begin{gather}\label{g_fluct}
-    g' + \nu Ag - \sigma g + B(g, U) + B(U + ge^{-\sigma t}, g) = \Lambda(g)\\*
-    g(0) = \varphi_0
+    g' + \nu Ag - \sigma g + B(g, U) + B(U + ge^{-\sigma t}, g) = \Lambda(g),\\*
+    g(0) = \varphi_0.
 \end{gather}
 
 Обозначим $p = Pg$, $q = Qg$. Пусть на некотором интервале $(t_0, t_1)$
@@ -112,47 +109,31 @@ $\varphi$ - решение задачи \eqref{operator_fluct}. Функция $
 
 \begin{gather*}
     \frac{1}{2}\frac{d}{dt}\norm{g}^2 + \norm{g_x}^2 = \sigma \norm{g}^2 -
-    \frac{1}{2}(U_x, g^2) \le C_1\norm{g}^2
+    \frac{1}{2}(U_x, g^2) \le C_1\norm{g}^2.
 \end{gather*}
-
-Здесь $C_1 = \sigma + \frac{1}{2}\norm{U_{x}}_{L^2(\Sigma)}$. На рассматриваемом 
-интервале справделиво следующая оценка
+Здесь $C_1 = \sigma + \frac{1}{2}\norm{U_{x}}_{L^{\infty}(\Omega)}$. На 
+рассматриваемом интервале справделиво следующая оценка
 
 \begin{gather*}
     \norm{g}^2 = \norm{p}^2 + \norm{q}^2 < 5\norm{q}^2 < 5\lambda^{-1}_{m +
-    1}\norm{q_x} \le 5 \lambda^{-1}_{m + 1}\norm{g_x}^2
+    1}\norm{q_x} \le 5 \lambda^{-1}_{m + 1}\norm{g_x}^2.
 \end{gather*}
-
 Следовательно, если 
 
 \begin{equation}
-    10C_1 \lambda_{m + 1}^{-1} < \nu
+    10C_1 \lambda_{m + 1}^{-1} < \nu,
 \end{equation}
-
 то справедливо неравенство
 
 \begin{equation}
-    \frac{d}{dt}\norm{g}^2 + \nu \norm{g_x} < 0
+    \frac{d}{dt}\norm{g}^2 + \nu \norm{g_x} < 0.
 \end{equation}
-
 Тогда следует
 
 \begin{equation}\label{8}
-    \norm{g(t_1)} < \norm{g(t_0)}
+    \norm{g(t_1)} < \norm{g(t_0)}.
 \end{equation}
-
 Поэтому $\norm{g(t_1)} < \norm{g(t_0)}$\\
-
-%Далее 
-%\begin{gather*}
-    %\frac{1}{2}\frac{d}{dt}\norm{q}^2 + \nu \norm{q_x}^2 - \sigma \norm{q}^2 +
-    %((U g)_x, q) + \frac{1}{2}e^{-\sigma t}((g^2)_x, q) = 0\\
-    %\norm{g_x}^2 = \norm{p_x}^2 + \norm{q_x}^2 \le \lambda_{m} \norm{p}^2 +
-    %\norm{q_x}^2 \le 5\norm{q_x}^2\\
-    %|(U g)_x, q)| \le C_0 \norm{g} \norm{q_x} < 5 C_0 \lambda^{-1}_{m + 1}
-    %\norm{q_x}^2, \ C_0 = max|U|\\
-    %|((g^2)_x, q)| = |(g^2, q_x)| \le \norm{g} \norm{g_x} \norm{q_x}
-%\end{gather*}
 
 Пусть теперь $\norm{p(t)} \ge 2 \norm{q(t)}, \ t \in (t_0, t_1)$, т.е.
 стабилизирующее управление включено. В этом случае, учитывая
@@ -169,13 +150,6 @@ $\varphi$ - решение задачи \eqref{operator_fluct}. Функция $
 воспользуемся последним неравенством. Тогда
 
 \begin{gather*}
-    %\frac{1}{2} \frac{d}{dt} [ \norm{p}^2 + \nu [ \norm{p_x}^2 - \sigma [
-    %\norm{p}^2 + \gamma \norm{q}^2] ]  + ( (U g)_x, p + \gamma q) + \gamma
-%\norm{q} \\* + \gamma\norm{q_x}^2] + \frac{1}{2} e^{-\sigma t} ( (g^2)_x, p +
-%\sigma q) + \frac{r_0 \gamma}{2} \norm{p}^2 \le 0\\
-%|( (U g)_x, p)| \le C_0 \norm{p_x} \norm{g} \le \frac{3}{2} C_0 \norm{p}
-%\norm{p_x} \le \frac{\nu}{2} \norm{p_x}^2 + \frac{1}{2\nu}(\frac{3}{2}C_0)^2
-%\norm{p}^2
     \frac{1}{2} \frac{d}{dt} (\norm{p}^2 + \gamma \norm{q}^2) + \nu
     (\norm{p_x}^2 + \gamma \norm{q_x}^2) - \sigma (\norm{p}^2 + \gamma
     \norm{q}^2) + \frac{r\gamma}{2} \norm{p}^2 \le \\
@@ -190,34 +164,50 @@ $\varphi$ - решение задачи \eqref{operator_fluct}. Функция $
     |((U g)_x, p_x + \gamma q_x)| \le \frac{3}{2} C_0 \norm{p}(\norm{p_x} +
     \gamma \norm{q_x}) \le \\
     \frac{\nu}{2} (\norm{p_x}^2 + \gamma \norm{q_x}^2) +
-    \frac{9C_0^2}{8\nu}(1 + \gamma)\norm{p}^2\\
+    \frac{9C_0^2}{8\nu}(1 + \gamma)\norm{p}^2.\\
     (g^2, p_x + \gamma q_x) = (1 - \gamma)(g^2, p_x) = (1 - \gamma)((q^2, p_x) -
     (p^2, q_x)) \le \\
     \norm{p_x}\norm{q_x}(\norm{p} + \norm{q}) \le \frac{1}{\gamma}(\norm{p_x}^2
-    + \gamma \norm{q_x}^2)\sqrt{\norm{p}^2 + \gamma \norm{q}^2}
+    + \gamma \norm{q_x}^2)\sqrt{\norm{p}^2 + \gamma \norm{q}^2}.
 \end{gather*}
-
 Следовательно
 
 \begin{gather*}
     \frac{d}{dt}(\norm{p}^2 + \gamma \norm{q}^2) + (\norm{p_x}^2 + \gamma
     \norm{q_x}^2)(\nu - \frac{1}{\nu}\sqrt{\norm{p}^2 + \gamma \norm{q}^2} + \\
-    (r \gamma - C_2)\norm{p}^2 \le 0
+    (r \gamma - C_2)\norm{p}^2 \le 0.
 \end{gather*}
-
 Здесь $C_2 = (2 + \gamma)\sigma - \frac{9C_0^2}{4\nu}(1 + \gamma)$. Если
 параметр $r$ выбрать так, что 
 
 \begin{equation}
-    r\gamma \ge C_2
+    r\gamma \ge C_2,
 \end{equation}
-
 то справедливо неравенство
 
-\begin{equation}
+\begin{equation}\label{C2mark}
     \frac{d}{dt}(\norm{p}^2 + \gamma{q}^2) + (\norm{p_x}^2 + \norm{q_x}^2)(\nu -
     \frac{1}{\nu}\sqrt{\norm{p}^2+ \gamma \norm{q}^2} \le 0
 \end{equation}
 
 Поэтому $(\norm{p}^2 + \gamma \norm{q}^2)|_{t=t_1} < (\gamma \nu)^2$, если
-$(\norm{p}^2 + \gamma \norm{q}^2)|_{t=t_0} < (\gamma \nu)^2$
+$(\norm{p}^2 + \gamma \norm{q}^2)|_{t=t_0} < (\gamma \nu)^2$\\
+
+Из оценок \eqref{8} и \eqref{C2mark} следует, что 
+\begin{equation}
+    \norm{g(t)}^2 \le C, \ t > 0,
+\end{equation}
+если $\norm{g(0)}^2 = \norm{u_0 - U}^2 < (\nu \gamma)^2$. Последнее означает,
+что 
+\begin{equation}\label{final}
+    \norm{u(t) - U}^2 \le C e^{-\sigma t}, \ t > 0
+\end{equation}
+
+Достаточноые условия на параметры задачи, гарантирующие выполнение \eqref{final}
+имеют вид:
+
+\begin{gather*}
+    10C_1 \lambda_{m + 1}^{-1} < \nu, \ C_1 = \sigma + \frac{1}{2}
+    \norm{U_x}_{L^{\infty}(\Omega)} \\*
+    r\gamma \ge C_2, \ C2 = (2 + \gamma)\sigma - \frac{9C_0^2}{4\nu}(1 + \gamma)
+\end{gather*}
