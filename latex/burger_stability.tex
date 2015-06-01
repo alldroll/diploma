@@ -2,6 +2,7 @@
 \vspace{1em}
 
 \subsection{Постановка задачи}
+\vspace{1em}
 
 Рассмотрим уравнение Бюргерса с вязкостью $\nu > 0$ на интервале $\Omega = (0,
 1) \subset \mathbb{R}$
@@ -54,24 +55,25 @@ $y = \Lambda(u - U) : H \to H$ \textit{такой, что} $\mathbf{supp} \ y (\
 +\infty$, если мала норма $\norm{\varphi_0}_{L^2(\Omega)}$
 
 \subsection{Неустойчивость стационарных решений shock-like}
+\vspace{1em}
 
 Рассмотрим семейство стационарных решений типа shock-like
 
 \begin{equation}\label{shock_like}
-    U(x) = -2\sigma\tanh{(\sigma(x - \frac{1}{2}))}, \ \text{где } \sigma \ge 0.
+    U(x) = -2\tau\tanh{(\tau(x - \frac{1}{2}))}, \ \text{где } \tau \ge 0.
 \end{equation}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=4in]{fig1}
-    \caption{$U(x)$ при разных $\sigma$}
+    \caption{$U(x)$ при разных $\tau$}
 \end{figure}
 
 Для изучения устойчивости системы \eqref{fluct} без стабилизирующего управления, 
 мы линеаризуем её
 
 \begin{gather}\label{linearized}
-    \theta_t = \theta_{xx} + 2 \sigma (\tanh(\sigma(x - \frac{1}{2}))\theta)_x, \\*
+    \theta_t = \theta_{xx} + 2 \tau (\tanh(\tau(x - \frac{1}{2}))\theta)_x, \\*
     \theta(0, t) = \theta(1, t) = 0,
 \end{gather}
 где $\theta(x, t)$ - решение уравнения \eqref{linearized}, которое является
@@ -81,18 +83,18 @@ $y = \Lambda(u - U) : H \to H$ \textit{такой, что} $\mathbf{supp} \ y (\
 $\zeta(x, t) = G(x)\theta(x, t)$, где 
 
 \begin{equation}
-    G(x) = \frac{\cosh(\sigma(x - \frac{1}{2}))}{\cosh(\frac{\sigma}{2})}.
+    G(x) = \frac{\cosh(\tau(x - \frac{1}{2}))}{\cosh(\frac{\tau}{2})}.
 \end{equation} 
 
 Имеем 
 
 \begin{gather} \label{transf_linear}
-    \zeta_t = \zeta_{xx} + \sigma^2 \left( \frac{2}{\cosh^2(\sigma(x -
+    \zeta_t = \zeta_{xx} + \tau^2 \left( \frac{2}{\cosh^2(\tau(x -
     \frac{1}{2}))} - 1 \right) \zeta, \\* 
     \zeta(0) = \zeta(1) = 0.
 \end{gather}
-Для $\sigma = 0$ система нейтрально устойчива. Для $\sigma > 0$, коэффициент 
-$\mu = \left(\frac{2}{\cosh^2(\sigma(x - \frac{1}{2}))} - 1 \right)$  в 
+Для $\tau = 0$ система нейтрально устойчива. Для $\tau > 0$, коэффициент 
+$\mu = \left(\frac{2}{\cosh^2(\tau(x - \frac{1}{2}))} - 1 \right)$  в 
 \eqref{transf_linear} является "неустойчивым" в окрестности 
 $x = \frac{1}{2}$ (Рис 2.), т.е. положительность этого члена ведет к
 неустойчивости системы.
