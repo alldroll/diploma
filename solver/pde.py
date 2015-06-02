@@ -25,7 +25,7 @@ def dus(x):
   return -2 * (sigma**2) * (1 - (np.tanh(sigma / 2)**2))
 
 def yt0(x):
-  return np.sin(np.pi * x) #+ us(x)#us(x1) + 2 + (us(x2) - us(x1) - 4) * x
+  return x**2 #+ us(x)#us(x1) + 2 + (us(x2) - us(x1) - 4) * x
 
 def yx0(t):
   return 0.#-2 * (sigma**2) * (1 - (np.tanh(sigma / 2)**2))
@@ -33,14 +33,17 @@ def yx0(t):
 def yxl(t):
   return 0.#-2 * (sigma**2) * (1 - (np.tanh(sigma / 2)**2))
 
-def reac_term(x):
+def sreac_term(sigma, x):
   return sigma**2 * (2 / (np.cosh(sigma * (x - 0.5))**2) - 1)
+
+def reac_term(x):
+  return sreac_term(sigma, x)
 
 def G(x):
   return np.cosh(sigma * (x - 0.5)) / np.cosh(sigma / 2)
 
-def teta(u):
-  teta = []
+def theta(u):
+  theta = []
   for j in range(m + 1):
-    teta.append([u[j][i] / G(x1 + i * dx) for i in range(n + 1)])
-  return teta
+    theta.append([u[j][i] / G(x1 + i * dx) for i in range(n + 1)])
+  return theta

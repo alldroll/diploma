@@ -19,7 +19,7 @@ def draw_surface(f, name, x1, x2, dx, t1, t2, dt):
 
   ax.set_xlabel('x', linespacing=3.2)
   ax.set_ylabel('t', linespacing=3.1)
-  ax.set_zlabel('u', linespacing=3.4)
+  ax.set_zlabel(r'' + '$\\theta$', linespacing=3.4)
 
 def draw_subplots(name, x, fn, labels):
   fig = plt.figure(name)
@@ -28,6 +28,8 @@ def draw_subplots(name, x, fn, labels):
   for f in fn:
     ax = fig.add_subplot(111)
     ax.plot(x, f, label=r'' + next(i))
+    ax.set_xlabel('x')
+    ax.set_ylabel(r'$\mu$')
 
   plt.legend(loc='upper right')
 
@@ -37,7 +39,7 @@ def draw_subplots(name, x, fn, labels):
   plt.axis((x1 - a, x2 + a, y1 - b, y2 + b)) 
   plt.xticks(np.arange(x1, x2, 2))
 
-  #fig.savefig('images/%s.png' % name) 
+  fig.savefig('images/%s.png' % name) 
 
 
 def show():

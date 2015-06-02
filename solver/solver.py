@@ -138,11 +138,11 @@ def implicit_burger_equation():
 #TODO refactor
 def implicit_perturbation_burger_equation(om, r, p):
   u = [[0. for x in range(n + 1)] for x in xrange(m + 1)]
-  g = v * dt / (dx**2)
+  g = dt / (dx**2)
   k = dt / (2 * dx)
 
   for i in range(n + 1):
-    u[0][i] = yt0(x1 + i * dx) - us(x1 + i * dx)
+    u[0][i] = yt0(x1 + i * dx) / G(x1 + i * dx) - us(x1 + i * dx)
 
   a = [0.] * (n + 1)
   b = [1 + 2 * g] * (n + 1)
@@ -165,16 +165,9 @@ def implicit_perturbation_burger_equation(om, r, p):
     c[-1] = 0
     d[-1] = 0.
 
-    # Neumann
-    # b[0] = -1
-    # c[0] = 1
-    # d[0] = dx * (yx0(t1 + j * dt) - dus(x1))
-    # a[-1] = -1
-    # b[-1] = 1
-    # d[-1] = dx * (yxl(t1 + j * dt) - dus(x2))
-
     c[1:-1] = [(s(i) - g) for i in range(1, n)]
-    d[1:-1] = [u[j - 1][i] * (1 - dt * dus(x1 + i * dx)) - dt * r * chi(om, x1 + i * dx) * pm(p, u[j - 1], x1, x2)  for i in range(1, n)] #
+    d[1:-1] = [u[j - 1][i] * (1 - dt * dus(x1 + i * dx)) - dt * r * chi(om, x1 +
+        i * dx) * pm(p, u[j - 1], x1, x2, x1 + i * dx)  for i in range(1, n)] #
 
     u[j] = tdma(a, b, c, d)
 

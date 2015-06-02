@@ -31,4 +31,4 @@ def extended_control(u, p):
     n_u = np.trapz(u2, dx=dx)
     n_p = np.trapz([u[i] * p_m[i] for i in range(n + 1)], dx=dx)
     n_q = n_u - n_p
-    return p_m if n_p >= 2 * n_q else [0. for i in range(n + 1)]
+    return p_m if n_p >= 4 * n_q else [0. for i in range(n + 1)]
