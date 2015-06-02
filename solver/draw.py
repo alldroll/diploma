@@ -5,6 +5,7 @@ from matplotlib import cm
 from matplotlib.ticker import LinearLocator, FormatStrFormatter
 import matplotlib.pyplot as plt
 import numpy as np
+from matplotlib import rc
 
 def draw_surface(f, name, x1, x2, dx, t1, t2, dt):
   fig = plt.figure(name)
@@ -23,13 +24,18 @@ def draw_surface(f, name, x1, x2, dx, t1, t2, dt):
 
 def draw_subplots(name, x, fn, labels):
   fig = plt.figure(name)
+  font = {
+            'size'   : 10
+  }
+
+  rc('font', **font)
 
   i = iter(labels)
   for f in fn:
     ax = fig.add_subplot(111)
     ax.plot(x, f, label=r'' + next(i))
-    ax.set_xlabel('x')
-    ax.set_ylabel(r'$\mu$')
+    ax.set_xlabel(r'$r$')
+    ax.set_ylabel(r'$\theta$')
 
   plt.legend(loc='upper right')
 

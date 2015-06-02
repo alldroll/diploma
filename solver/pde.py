@@ -25,7 +25,7 @@ def dus(x):
   return -2 * (sigma**2) * (1 - (np.tanh(sigma / 2)**2))
 
 def yt0(x):
-  return x**2 #+ us(x)#us(x1) + 2 + (us(x2) - us(x1) - 4) * x
+  return np.sin(5 * np.pi * x) #+ us(x)#us(x1) + 2 + (us(x2) - us(x1) - 4) * x
 
 def yx0(t):
   return 0.#-2 * (sigma**2) * (1 - (np.tanh(sigma / 2)**2))
