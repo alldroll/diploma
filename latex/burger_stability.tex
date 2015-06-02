@@ -4,8 +4,7 @@
 \subsection{Постановка задачи}
 \vspace{1em}
 
-Рассмотрим уравнение Бюргерса с вязкостью $\nu > 0$ на интервале $\Omega = (0,
-1) \subset \mathbb{R}$
+Рассмотрим уравнение Бюргерса с вязкостью $\nu > 0$ на интервале $\Omega$
 
 \begin{equation}\label{burger}
     u_t - \nu u_{xx} + u_x u = f + y, \ u|_{\Gamma} = u_b, \quad t > 0.
@@ -22,7 +21,7 @@
     -\nu U_{xx} + U U_x = f, \ U|_{\Gamma} = u_b,
 \end{equation}
 и функция $U$ является неустойчивой особой точкой динамической системы, порождаемой
-эволюционным уравнение \eqref{burger} в фазовом пространстве $H = L^2(\Omega)$.
+эволюционным уравнение \eqref{burger} в фазовом пространстве $H$.
 Задача стабилизации состоит в следующем:\\
 
 \textit{Для заданного} $\sigma > 0$ 
@@ -57,7 +56,7 @@ $y = \Lambda(u - U) : H \to H$ \textit{такой, что} $\mathbf{supp} \ y (\
 \subsection{Неустойчивость стационарных решений shock-like}
 \vspace{1em}
 
-Рассмотрим семейство стационарных решений типа shock-like
+Рассмотрим семейство стационарных решений типа shock-like \cite{KMV}
 
 \begin{equation}\label{shock_like}
     U(x) = -2\tau\tanh{(\tau(x - \frac{1}{2}))}, \ \text{где } \tau \ge 0.
