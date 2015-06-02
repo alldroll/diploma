@@ -6,7 +6,7 @@
 
 \title{Стабилизация неустойчивых эволюционных систем}
 \author{Петров Александр}
-\date{5 марта 2015 г.}
+\date{3 июня 2015 г.}
 
 \graphicspath{{images/}}
 \setbeamertemplate{frametitle}[default][left]
@@ -29,28 +29,43 @@
 
 \begin{frame}
 \frametitle{Введение}
-\hspace{5mm} В реальных физических процессах неизбежно возникают непредусмотренные флуктуации и поэтому возникает необходимость разработки методов построения управлений, способных реагировать и подавлять возмущения. Управления такого типа называются \emph{управления с обратной связью}. В данной работе решались следующие задачи:
-\begin{itemize}
-	\item Проанализирована устойчивость линейной параболической системы;
-	\item Рассмотрен метод стабилизации линейной параболической системы с постоянными коэффициентами конечномерным локальным управлением с обратной связью; 
-	\item Представлены численные примеры, показывающие эффективность данного метода на уравнении теплопроводности, численные примеры неустойчивых стационарных решений уравнения Бюргерса
-\end{itemize}
+\hspace{5mm} В реальных физических процессах неизбежно возникают 
+непредусмотренные флуктуации и поэтому возникает необходимость разработки 
+методов построения управлений, способных реагировать и подавлять возмущения. 
+Проблемы стабилизации систем параболического типа привлекают внимание 
+специалистов в силу прикладной значимости данной системы
+
+\hspace{5mm} В представленной ВКР рассматривается стабилизация эволюционных систем с 
+постоянными коэффицентами локальным управлением с обратной связью
 \end{frame}
 
+\begin{frame}
+\frametitle{Основные обозначения}
+\begin{itemize}
+    \item Символы $u_t, u_x, u_{xx}$ обозначают соотвествующие производные функции $u$
+    \item Через $E'$ обозначим пространство сопряженное к пространству $E$
+    \item Здесь и далее, $\Omega = (0, 1) \subset \mathbb{R}$, $H = L^2(\Omega)$ и 
+            $V = H^1_0(\Omega)$
+    \item $w_j = w_j(x) = \sqrt{2}\sin{(\pi j x)}, \ x \in (0, 1), \
+        j=1, 2,..$ базис в $H$ и в $V$.
+\end{itemize}
+
+
+\end{frame}
 
 \begin{frame}
 \frametitle{Устойчивость параболической системы}
 
 \begin{block}{}
 \begin{equation}\label{dif_form}
-u_t = u_{xx} + \alpha u, \quad 0 < x < 1, \quad t > 0
+    u_t = u_{xx} + \alpha u, \ x \in \Omega, \ t > 0
 \end{equation}
 \end{block}
 с начальным и граничными условиями:
 \begin{block}{}
 \begin{gather}\label{d_control}
-u(0, t) = u(1, t) = 0, \\*
-u(x, 0) = u_{0}(x) \in L^2(0, 1). \nonumber
+    u(0, t) = u(1, t) = 0, \\*
+    u(x, 0) = u_{0}(x) \in H. \nonumber
 \end{gather}
 \end{block}
 
@@ -64,11 +79,13 @@ u(x, 0) = u_{0}(x) \in L^2(0, 1). \nonumber
 
 \begin{frame}
 \frametitle{Конструкция оператора управления}
-Здесь и далее $H = L_2(0, 1), V = H^1_0(0, 1)$.
 
-\hspace{5mm}Пусть $\omega \subset (0, 1)$, такой что $\bar{\omega} \subset (0, 1)$. Задача стабилизации за счет конечномерных локально распределённых в $\omega$ управлений заключается в построении оператора $\mathcal{R} : H \rightarrow H$ такого, что
+\hspace{5mm}Пусть $\omega \subset \Omega$, такой что $\bar{\omega} \subset
+\Omega$. Задача стабилизации за счет конечномерных локально распределённых в 
+$\omega$ управлений заключается в построении оператора 
+$\mathcal{R} : H \rightarrow H$ такого, что
 \begin{enumerate}
-\item $\forall z \in H \quad \supp \operator{z} \subset \omega$,
+\item $\forall z \in H \ \supp \operator{z} \subset \omega$,
 \item $\dim \operator{(H)} < +\infty$.
 \end{enumerate}
 И при этом решение задачи 
@@ -85,13 +102,8 @@ u(x, 0) = u_{0}(x) \in L^2(0, 1). \nonumber
 \begin{frame}
 \frametitle{Конструкция оператора управления}
 
-\begin{block}{}
-\begin{equation}\label{basis}
-	w_j = w_j(x) = \sqrt{2}\sin{(\pi j x)}, \quad x \in (0, 1), \quad j=1, 2,..
-\end{equation}
-\end{block}
-
-Рассмотрим следующие операторы проектирования : $P_m : H \rightarrow H_m$, $Q_m : H \rightarrow H_m^{\perp}$.
+Рассмотрим следующие операторы проектирования : 
+$P_m : H \rightarrow H_m$, $Q_m : H \rightarrow H_m^{\perp}$.
 
 \begin{block}{}
 \begin{equation}
@@ -112,7 +124,7 @@ u(x, 0) = u_{0}(x) \in L^2(0, 1). \nonumber
 
 \begin{block}{}
 \begin{equation}
-	\operator{z} = -r\chi_{\omega}P_mz, \quad r > 0
+	\operator{z} = -r\chi_{\omega}P_mz, \ r > 0
 \end{equation}
 \end{block}
 Здесь 
@@ -136,10 +148,10 @@ u(x, 0) = u_{0}(x) \in L^2(0, 1). \nonumber
 
 \begin{frame}
 \frametitle{Численная реализация алгоритма}
-Предложена следующая неявная разностная схема \\
+Предложена следующая разностная схема \\
 \begin{block}{}
 	\begin{equation}\label{scheme}
-		\frac{u^{j + 1}_i - u^j_i}{\tau} - \frac{u_{i + 1}^{j + 1} - 2u_{i}^{j + 1} + u_{i - 1}^{j + 1}}{h^2} - \alpha(x) u^{j + 1}_i + r\chi_{\omega}P_m u^j_i = 0
+		\frac{u^{j + 1}_i - u^j_i}{\tau} - \frac{u_{i + 1}^{j + 1} - 2u_{i}^{j + 1} + u_{i - 1}^{j + 1}}{h^2} - \alpha u^{j + 1}_i + r\chi_{\omega}P_m u^j_i = 0
 	\end{equation}
 \end{block}
 
@@ -147,34 +159,10 @@ u(x, 0) = u_{0}(x) \in L^2(0, 1). \nonumber
 
 \end{frame}
 
-
-\begin{frame}
-\frametitle{Пример устойчивого решения уравнения теплопроводности}
-
-$u(x, 0) = \sin{(\pi x)}$. Фиксируем $\alpha = \pi^2 - 2$, $\omega = [0, 0.2]$. 
-
-\begin{figure}[H]
-\centering
-\begin{minipage}{.5\textwidth}
-  \centering
-  \includegraphics[width=2.4in]{par_ex_pim2}
-  \caption{Без управления}
-  \label{fig:test1}
-\end{minipage}%
-\begin{minipage}{.5\textwidth}
-  \centering
-  \includegraphics[width=2.4in]{par_re_pim2}
-  \caption{Управление $m = 2,\; r = 1$}
-  \label{fig:test2}
-\end{minipage}
-\end{figure}
-
-\end{frame}
-
 \begin{frame}
 \frametitle{Пример неустойчивого решения уравнения теплопроводности}
 
-$u(x, 0) = \sin{(\pi x)}$. Фиксируем $\alpha = \pi^2 + 0.1$, $\omega = [0, 0.2]$. 
+$u(x, 0) = \sin{(\pi x)}$. Фиксируем $\alpha = \pi^2 + 0.1$, $\omega = (0, 0.2)$.
 
 
 \begin{figure}[H]
@@ -188,7 +176,7 @@ $u(x, 0) = \sin{(\pi x)}$. Фиксируем $\alpha = \pi^2 + 0.1$, $\omega = 
 \begin{minipage}{.5\textwidth}
   \centering
   \includegraphics[width=2.4in]{par_re_pi01}
-  \caption{Управление $m = 2,\; r = 8$}
+  \caption{$m = 2,\; r = 8$}
   \label{fig:test2}
 \end{minipage}
 \end{figure}
@@ -198,7 +186,7 @@ $u(x, 0) = \sin{(\pi x)}$. Фиксируем $\alpha = \pi^2 + 0.1$, $\omega = 
 \begin{frame}
 \frametitle{Пример неустойчивого решения уравнения теплопроводности}
 
-Пусть $u(x, 0) = x(1 - x)$. Фиксируем $\alpha = \pi^2 + 3$, $\omega = [0, 0.4]$. 
+Пусть $u(x, 0) = x(1 - x)$. Фиксируем $\alpha = \pi^2 + 3$, $\omega = (0, 0.4)$.
 
 
 \begin{figure}[H]
@@ -225,7 +213,7 @@ $u(x, 0) = \sin{(\pi x)}$. Фиксируем $\alpha = \pi^2 + 0.1$, $\omega = 
 Рассмотрим вязкое уравнение Бюргерса:
 \begin{block}{}
 \begin{equation}\label{burger}
-  u_t = u_{xx} - u_x u, \quad 0 < x < 1, \quad t > 0
+  u_t = u_{xx} - u_x u, \ x \in \Omega, \ t > 0
 \end{equation}
 \end{block}
 с начальным и граничными условиями:
