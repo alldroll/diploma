@@ -1,79 +1,116 @@
-\documentclass[a4paper,14pt]{article}
-\usepackage{extsizes}
-\usepackage[T2A]{fontenc}
-\usepackage[utf8x]{inputenc}
-\usepackage[english,russian]{babel}
-\usepackage{amssymb,amsfonts,amsmath,mathtext,cite,enumerate,float}
-% \usepackage[dvips]{graphicx}
-%\usepackage{breqn}
+%\documentclass[a5paper,14pt]{G7-32}
+\documentclass[utf8x]{G7-32}
+%\usepackage{extsizes}
+%\usepackage[T2A]{fontenc}
+%\usepackage[utf8x]{inputenc}
+%\usepackage[english,russian]{babel}
+%\usepackage{amssymb,amsfonts,amsmath,mathtext,cite,enumerate,float}
+%% \usepackage[dvips]{graphicx}
+%%\usepackage{breqn}
 \usepackage{graphicx}
-\usepackage{sectsty}
-\usepackage{array}
+%%\usepackage{sectsty}
+%\usepackage{array}
 \usepackage{amsthm}
-\usepackage{titlesec}
-\usepackage{indentfirst}
-\usepackage{xr}
-\usepackage{subfigure}
-\usepackage[round, sort, numbers]{natbib}
-\usepackage{url}
-\usepackage{setspace}
+%%\usepackage{titlesec}
+%\usepackage{indentfirst}
+%\usepackage{xr}
+%\usepackage{subfigure}
+%\usepackage[round, sort, numbers]{natbib}
+%\usepackage{url}
+%\usepackage{setspace}
 \usepackage{pdfpages}
-\usepackage{caption}
-\usepackage{glossaries}
+%\usepackage{caption}
+%\usepackage{glossaries}
+\usepackage{float}
 
-\setcitestyle{square}
+%\setcitestyle{square}
 \graphicspath{{images/}}
 
-\allsectionsfont{\centering}
+%\allsectionsfont{\centering}
 
-\makeatletter
+%\makeatletter
 % \renewcommand{\@biblabel}[1]{#1.}
-\makeatother
+%\makeatother
 
-\usepackage{geometry}
-\geometry{left=2.5cm}
-\geometry{right=1.5cm}
-\geometry{top=2cm}
-\geometry{bottom=2cm}
+%\usepackage{geometry}
+%\geometry{left=2.5cm}
+%\geometry{right=1.5cm}
+%\geometry{top=2cm}
+%\geometry{bottom=2cm}
+
+\include{latex-g7-32/tex/preamble.inc}
+
+% Настройки листингов.
+\ifPDFTeX
+\include{latex-g7-32/tex/plistings.inc}
+\else
+\usepackage{latex-g7-32/tex/plocal-minted}
+\fi
+
+\include{latex-g7-32/tex/macros.inc}
 
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
 \newcommand{\isum}[2][j]{\sum \limits_{#1=1}^{\infty}{#2}}
 \newcommand{\operator}[1]{\mathcal{R}{#1}}
 \newcommand{\supp}{\mathop{\mathrm{supp}}}
-\newtheorem{remark}{Замечание}
+%\newtheorem{remark}{Замечание}
 
 \DeclareMathOperator\arctanh{arctanh}
 \DeclareMathOperator\arccoth{arccoth}
 \DeclareMathOperator\arccot{arccot}
 
-\numberwithin{equation}{section}
+\numberwithin{equation}{chapter}
 
-\newcommand{\sectionbreak}{\clearpage}
+%\newcommand{\sectionbreak}{\clearpage}
 
 \begin{document}
 
-\includepdf[pages={1-}]{titul.pdf}
-\renewcommand{\contentsname}{Содержание}
-\clearpage
-\setcounter{page}{1}
+%\includepdf[pages={1-}]{titul.pdf}
+%\renewcommand{\contentsname}{Содержание}
+%\clearpage
+%\setcounter{page}{1}
+%\tableofcontents
+
+%\onehalfspacing
+%\begin{onehalfspace}
+    %\input{introduction}
+    %%\input{basic_notation}
+    %%\input{par_stability}
+    %%\input{par_unstable_example}
+    %%\input{par_theory}
+    %%\input{num_implementation}
+    %%\input{par_examples}
+%%    \input{burger_stability}
+    %%\input{burger_unstable_example}
+    %%\input{burger_theory}
+    %%%\input{num_implementation_bur}
+    %%\input{burger_examples}
+    %%\input{conclusion}
+    %%\input{literature}
+%\end{onehalfspace}
+
 \tableofcontents
 
-\onehalfspacing
-\begin{onehalfspace}
-    \input{introduction}
-    \input{basic_notation}
-    \input{par_stability}
-    \input{par_unstable_example}
-    \input{par_theory}
-    \input{num_implementation}
-    \input{par_examples}
-    \input{burger_stability}
-    \input{burger_unstable_example}
-    \input{burger_theory}
-    %\input{num_implementation_bur}
-    \input{burger_examples}
-    \input{conclusion}
-    \input{literature}
-\end{onehalfspace}
+\include{introduction}
+\include{basic_notation}
+
+\mainmatter
+
+\include{par_stability}
+\include{par_unstable_example}
+\include{par_theory}
+\include{num_implementation}
+\include{par_examples}
+\include{burger_stability}
+\include{burger_unstable_example}
+\include{burger_theory}
+\include{burger_examples}
+
+\backmatter
+
+\include{conclusion}
+\include{literature}
+
+
 
 \end{document} 

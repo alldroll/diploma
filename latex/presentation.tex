@@ -1,6 +1,7 @@
 \documentclass{beamer}
 \usepackage[T2A]{fontenc}       %поддержка кириллицы
 \usepackage[utf8]{inputenc}
+\usepackage{caption}
 \usepackage{graphicx}
 \usetheme{Frankfurt}
 
@@ -212,208 +213,233 @@ $u(x, 0) = \sin{(\pi x)}$. Фиксируем $\alpha = \pi^2 + 0.1$, $\omega = 
 
 Рассмотрим вязкое уравнение Бюргерса:
 \begin{block}{}
+
 \begin{equation}\label{burger}
-  u_t = u_{xx} - u_x u, \ x \in \Omega, \ t > 0
+    u_t - \nu u_{xx} + u_x u = f + y, \ u|_{\Gamma} = u_b, \quad t > 0.
+\end{equation}
+
+\end{block}
+
+Пусть $U$ - стационарное решение \eqref{burger}, то есть
+
+\begin{block}{}
+\begin{equation}\label{stationary_sol}
+    -\nu U_{xx} + U U_x = f, \ U|_{\Gamma} = u_b,
 \end{equation}
 \end{block}
-с начальным и граничными условиями:
+
+Обозначем за $\varphi = u - U$
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Стабилизация неустойчивых стационарных решений уравнения Бюргерса}
+\textit{Для заданного} $\sigma > 0$ 
+\textit{требуется найти оператор управления с обратной связью} 
+$y = \Lambda(u - U) : H \to H$ \textit{такой, что} $\mathbf{supp} \ y (\cdot,t) \subset 
+\bar{\omega}$ \textit{и}
+
 \begin{block}{}
-\begin{gather}\label{cond}
-  u(0, t) = w_1(t), \\*
-  u(1, t) = w_2(t), \\*
-  u(x, 0) = u_{0}(x) \in L^2(0, 1). \nonumber
+
+\begin{gather}\label{fluct}
+    \varphi_t - \nu \varphi_{xx} + \varphi U_x + (\varphi + U)\varphi_x =
+    \Lambda(\varphi),\\* 
+    \varphi|_{\Gamma} = 0, \ t > 0,\\*
+    \varphi|_{t = 0} = \varphi_0 = u_0 - U.
 \end{gather}
 \end{block}
+чтобы $\norm{\varphi(t)}_{L^2(\Omega)} \le C e^{-\sigma t}$ при $t \to
++\infty$, если мала норма $\norm{\varphi_0}_{L^2(\Omega)}$
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Неустойчивость стационарных решений типа shock-like}
 
 Рассмотрим семейство стационарных решений типа shock-like
-
 \begin{block}{}
 \begin{equation}\label{shock_like}
-  U(x) = -2\sigma\tanh{(\sigma(x - \frac{1}{2}))},
+    U(x) = -2\tau\tanh{(\tau(x - \frac{1}{2}))}, \ \text{где } \tau \ge 0.
 \end{equation}
 \end{block}
-где параметр $\sigma \ge 0$.
 
-\end{frame}
-
-\begin{frame}
-\frametitle{Стабилизация неустойчивых стационарных решений уравнения Бюргерса}
 \begin{figure}[H]
-  \centering
-  \includegraphics[width=3in]{fig1}
-  \caption{$U(x)$ при разных $\sigma$}
+    \centering
+    \includegraphics[width=2.5in]{fig1}
+    \caption{$U(x)$ при разных $\tau$}
 \end{figure}
-\end{frame}
-
-\begin{frame}
-\frametitle{Стабилизация неустойчивых стационарных решений уравнения Бюргерса}
-В качестве \eqref{cond} возмем
-
-\begin{block}{}
-\begin{gather}\label{cond2}
-  w_1(t) = U(0) \\*
-  w_2(t) = U(1)
-\end{gather}
-\end{block}
-
-Введем новое обозначение $\hat{u}(x, t) = u(x, t) - U(x)$. Тогда, система \eqref{burger} перепишется через новую переменную $\hat{u}$
-
-\begin{block}{}
-\begin{gather}\label{fluct}
-    \hat{u}_t = \hat{u}_{xx} - U(x)\hat{u}_x - U'(x)\hat{u} - \hat{u}_x\hat{u}, \\*
-    \hat{u}(0, t) = \hat{u}(1, t) = 0, \\*
-    \hat{u}(x, 0) = u_{0}(x) - U(x) \in L^2(0, 1).
-\end{gather}
-\end{block}
 
 \end{frame}
 
 \begin{frame}
-\frametitle{Стабилизация неустойчивых стационарных решений уравнения Бюргерса}
+\frametitle{Неустойчивость стационарных решений типа shock-like}
 
-Для изучения устойчивости системы \eqref{fluct}, линеаризуем её
+Для изучения устойчивости системы \eqref{fluct} без стабилизирующего управления, 
+мы линеаризуем её
 
 \begin{block}{}
 \begin{gather}\label{linearized}
-  \theta_t = \theta_{xx} + 2 \sigma (\tanh(\sigma(x - \frac{1}{2}))\theta)_x \\*
-  \theta(0, t) = \theta(1, t) = 0,
+    \theta_t = \theta_{xx} + 2 \tau (\tanh(\tau(x - \frac{1}{2}))\theta)_x, \\*
+    \theta(0, t) = \theta(1, t) = 0,
 \end{gather}
 \end{block}
 
-где $\theta(x, t)$ линеаризация $\hat{u}$. \eqref{linearized} - уравнение конвенкции-диффузии-реакции. Для простоты изучения устойчивости, мы избавимся от конвекционого члена используя преобразование $\zeta(x, t) = G(x)\theta(x, t)$, где 
+Избавимся от конвекционого члена используя преобразование 
+$\zeta(x, t) = G(x)\theta(x, t)$, где 
 
 \begin{block}{}
 \begin{equation}
-  G(x) = \frac{\cosh(\sigma(x - \frac{1}{2}))}{\cosh(\frac{\sigma}{2})}
-\end{equation} 
+    G(x) = \frac{\cosh(\tau(x - \frac{1}{2}))}{\cosh(\frac{\tau}{2})}.
+\end{equation}
 \end{block}
 
 \end{frame}
 
 \begin{frame}
-\frametitle{Стабилизация неустойчивых стационарных решений уравнения Бюргерса}
+\frametitle{Неустойчивость стационарных решений типа shock-like}
 
 \begin{block}{}
 \begin{gather} \label{transf_linear}
-  \zeta_t = \zeta_{xx} + \sigma^2 \left( \frac{2}{\cosh^2(\sigma(x - \frac{1}{2}))} - 1 \right) \zeta \\* 
-  \zeta(0) = \zeta(1) = 0 
+    \zeta_t = \zeta_{xx} + \tau^2 \left( \frac{2}{\cosh^2(\tau(x -
+    \frac{1}{2}))} - 1 \right) \zeta, \\* 
+    \zeta(0) = \zeta(1) = 0.
 \end{gather}
 \end{block}
-
-Для $\sigma = 0$ система нейтрально устойчива. Для $\sigma > 0$, реакционный член в \eqref{transf_linear} также является неустойчивым в окрестности $x = \frac{1}{2}$ (Рис 2.).
+Для $\tau = 0$ система нейтрально устойчива. Для $\tau > 0$, коэффициент 
+$\mu = \left(\frac{2}{\cosh^2(\tau(x - \frac{1}{2}))} - 1 \right)$  в 
+\eqref{transf_linear} является "неустойчивым" в окрестности 
+$x = \frac{1}{2}$ (Рис 2.), т.е. положительность этого члена ведет к
+неустойчивости системы.
 
 \end{frame}
 
 \begin{frame}
-\frametitle{Стабилизация неустойчивых стационарных решений уравнения Бюргерса}
+\frametitle{Неустойчивость стационарных решений типа shock-like}
 
 \begin{figure}[H]
-  \centering
-  \includegraphics[width=3in]{fig2}
-  \caption{$\frac{2}{\cosh^2(\sigma(x - \frac{1}{2}))} - 1$}
+    \centering
+    \includegraphics[width=3.5in]{fig2}
+    \caption{График $\mu$ в \eqref{transf_linear}}
 \end{figure}
 
 \end{frame}
 
 \begin{frame}
-\frametitle{Примеры неустойчивых стационарных решений уравнения Бюргерса}
+\frametitle{Примеры неустойчивых стационарных решений}
 
-Пусть $\theta_0(x) = \frac{\sin(\pi x)}{G(x)}$. Фиксируем $\omega = [0, 0.2]$, $\sigma = 3$. 
-
+Начальное условие $\theta_0(x) = \frac{\sin(\pi x)}{G(x)}$, параметр $\tau$ 
+возмем равный 15. На рис. 7 показано неустойчивое поведение системы
+\eqref{fluct}
 
 \begin{figure}[H]
-\centering
-\begin{minipage}{.5\textwidth}
+    \centering
+    \includegraphics[width=3in]{ex_s15}
+    \caption{}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Примеры неустойчивых стационарных решений}
+
+Начальное условия $\theta_0(x) = \frac{x^2}{G(x)}$. Параметр $\tau = 15$.
+Поведение решения представлено на рис.8.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=3in]{ex_x2_s15}
+    \caption{}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Конструкция управления}
+
+Оператор стабилизирующего управления имеет следующую структуру
+
+\begin{block}{}
+\begin{equation}
+    \Lambda(\varphi) = -r \chi_{\omega}h(\mu)P\varphi.
+\end{equation}
+\end{block}
+
+Здесь $\mu = \norm{P_m\varphi} - 2 \norm{Q_m\varphi}$
+
+\begin{block}{}
+\begin{gather*}
+    \begin{matrix}
+        h(\mu) & =
+        & \left\{
+        \begin{matrix}
+            0, & \mu < 0, \\
+            1, & \mu > 0, \\
+            [0, 1], & \mu = 0
+        \end{matrix} \right.
+    \end{matrix} \quad
+    \begin{matrix}
+        \chi_{\omega}(x) & =
+        & \left\{
+        \begin{matrix}
+            0, & \mbox{если } x \notin \omega, \\
+            1, & \mbox{иначе. }
+        \end{matrix} \right.
+    \end{matrix}
+\end{gather*}
+\end{block}
+$r > 0$, $\chi_{\omega}$ - характеристическая функция области $\omega$,
+$h(\mu)$ - многозначная функция Хевисайда\\
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Конечномерная стабилизация}
+
+\begin{block}{}
+\begin{equation}\label{final}
+    \norm{u(t) - U}^2 \le C e^{-\sigma t}, \ t > 0
+\end{equation}
+\end{block}
+
+Достаточноые условия на параметры задачи, гарантирующие выполнение \eqref{final}
+имеют вид:
+
+\begin{block}{}
+\begin{gather*}
+    10C_1 \lambda_{m + 1}^{-1} < \nu, \ C_1 = \sigma + \frac{1}{2}
+    \norm{U_x}_{L^{\infty}(\Omega)} \\*
+    r\gamma \ge C_2, \ C2 = (2 + \gamma)\sigma - \frac{9C_0^2}{4\nu}(1 + \gamma)
+\end{gather*}
+\end{block}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Примеры численного моделирования стабилизации}
+
+Пусть $\theta_0 = \frac{sin(\pi x)}{G(x)}$ - начальное условие, $\tau = 15$
+- параметр семейства shock-like
+
+\begin{figure}[H]
   \centering
-  \includegraphics[width=2.4in]{ex_s3}
-  \caption{Без управления}
-  \label{fig:test1}
-\end{minipage}%
-\begin{minipage}{.5\textwidth}
-  \centering
-  \includegraphics[width=2.4in]{re_s3}
-  \caption{$m = 2, \; r = 15$}
+  \includegraphics[width=3in]{re_s15}
+  \caption{Управление с $\omega = (0, 0.4), \; m = 4, \; r = 30$}
   \label{fig:test2}
-\end{minipage}
 \end{figure}
 
 \end{frame}
 
 \begin{frame}
-\frametitle{Примеры неустойчивых стационарных решений уравнения Бюргерса}
+\frametitle{Примеры численного моделирования стабилизации}
 
-$\theta_0(x) = \frac{\sin(\pi x)}{G(x)}$. Фиксируем $\omega = [0, 0.2]$, $\sigma = 15$. 
-
-
-\begin{figure}[H]
-\centering
-\begin{minipage}{.5\textwidth}
-  \centering
-  \includegraphics[width=2.4in]{ex_s15}
-  \caption{Без управления}
-  \label{fig:test1}
-\end{minipage}%
-\begin{minipage}{.5\textwidth}
-  \centering
-  \includegraphics[width=2.4in]{re_s15}
-  \caption{Управление с $m = 2, \; r = 15$}
-  \label{fig:test2}
-\end{minipage}
-\end{figure}
-
-
-\end{frame}
-
-\begin{frame}
-\frametitle{Примеры неустойчивых стационарных решений уравнения Бюргерса}
-
-В качестве начального условия возмем быстро осциллирующую функцию $\frac{\sin(10 \pi x)}{G(x)}$. Параметр $\sigma$ возмем равным 15. 
-
-
+Начальное условие $\theta_0(x) = \frac{x^2}{G(x)}$, $\tau = 15$.
 
 \begin{figure}[H]
-\centering
-\begin{minipage}{.5\textwidth}
-  \centering
-  \includegraphics[width=2.4in]{ex_sin10_s15}
-  \caption{Без управления}
-  \label{fig:test1}
-\end{minipage}%
-\begin{minipage}{.5\textwidth}
-  \centering
-  \includegraphics[width=2.4in]{re_sin10_s15}
-  \caption{Управление с $m = 2, \; r = 15$}
+ \centering
+  \includegraphics[width=3.0in]{re_x2_s15}
+  \caption{$\omega = (0, 0.4), \; r = 30, \; m = 3$}
   \label{fig:test2}
-\end{minipage}
 \end{figure}
-
-
-\end{frame}
-
-
-\begin{frame}
-\frametitle{Примеры неустойчивых стационарных решений уравнения Бюргерса}
-
-$\theta_0(x) = \frac{x^2}{G(x)}$. Фиксируем $\omega = [0, 0.2]$, $\sigma = 15$. 
-
-
-\begin{figure}[H]
-\centering
-\begin{minipage}{.5\textwidth}
-  \centering
-  \includegraphics[width=2.4in]{ex_x2_s15}
-  \caption{Без управления}
-  \label{fig:test1}
-\end{minipage}%
-\begin{minipage}{.5\textwidth}
-  \centering
-  \includegraphics[width=2.4in]{re_x2_s15}
-  \caption{$\omega = [0, 0.2], \; r = 15, \; m = 2$}
-  \label{fig:test2}
-\end{minipage}
-\end{figure}
-
-
 
 \end{frame}
 
@@ -421,13 +447,15 @@ $\theta_0(x) = \frac{x^2}{G(x)}$. Фиксируем $\omega = [0, 0.2]$, $\sigm
 \begin{frame}
 \frametitle{Заключение}
 
-При выполнении цели данной работы были выполнены следующие задачи:
-\begin{itemize}
-	 \item Изучена литература, связанная с описанием и решением задачи стабилизации параболических систем;
-  \item Подробно разобран метод стабилизации локальным конечномерным управлением с обратной связью;
-  \item Численная реализация метода стабилизации, в том числе : написание программы для вычисления разностной схемы, метода Филона.
-  \item Приведены численные примеры неустойчивых стационарных решений уравнения Бюргерса, применение метода стабилизации.
-\end{itemize}
+В представленной ВКР предложен простой метод стабилизации неустойчивых
+стационарных решений параболических уравнений. Особенность предложенного
+алгоритма заключается в локальности носителя управления и конечномерности образа
+оператора управления. В работе разработан алгоритм реаллизации стабилизирующего
+управления для линейного уравнения теплопроводности и нелинейного уравнения
+Бюргерса, в том числе написание программы для решения разностных схем и
+реализация метода Филона для интегралов от быстро осциллирующих функций.
+Приведены численные примеры неустойчивых стационарных решений параболических
+уравнений, и "применение" предложенного метода стабилизации.
 
 \end{frame}
 

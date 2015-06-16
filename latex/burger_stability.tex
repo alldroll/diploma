@@ -1,7 +1,9 @@
-\section{Стабилизация неустойчивых стационарных решений уравнения Бюргерса}
-\vspace{1em}
+%\section{Стабилизация неустойчивых стационарных решений уравнения Бюргерса}
+%\vspace{1em}
+\chapter{Стабилизация неустойчивых стационарных решений уравнения Бюргерса}
 
-\subsection{Постановка задачи}
+
+\section{Постановка задачи}
 \vspace{1em}
 
 Рассмотрим уравнение Бюргерса с вязкостью $\nu > 0$ на интервале $\Omega$
@@ -25,7 +27,7 @@
 Задача стабилизации состоит в следующем:\\
 
 \textit{Для заданного} $\sigma > 0$ 
-\textit{требуется найти оператор управления с обратнойсвязью} 
+\textit{требуется найти оператор управления с обратной связью} 
 $y = \Lambda(u - U) : H \to H$ \textit{такой, что} $\mathbf{supp} \ y (\cdot,t) \subset 
 \bar{\omega}$ \textit{и решение замкнутой системы}
 
@@ -33,7 +35,7 @@ $y = \Lambda(u - U) : H \to H$ \textit{такой, что} $\mathbf{supp} \ y (\
     u_t - \nu u_xx + u u_xx = f + \Lambda(u - U), \ u|_{\Gamma} = u_b,
     \ t > 0, \quad u|_{t=0} = u_0
 \end{equation}
-\textit{сходится к} $U$ \textit{с заданной скоростью} $\sigma$
+\textit{сходилось к} $U$ \textit{с заданной скоростью} $\sigma$
 
 \begin{equation}
     \norm{u(t) - U}_{L^2(\Omega)} \le C e^{-\sigma t} \ \text{при } t
@@ -53,7 +55,7 @@ $y = \Lambda(u - U) : H \to H$ \textit{такой, что} $\mathbf{supp} \ y (\
 Требуется чтобы $\norm{\varphi(t)}_{L^2(\Omega)} \le C e^{-\sigma t}$ при $t \to
 +\infty$, если мала норма $\norm{\varphi_0}_{L^2(\Omega)}$
 
-\subsection{Неустойчивость стационарных решений shock-like}
+\section{Неустойчивость стационарных решений shock-like}
 \vspace{1em}
 
 Рассмотрим семейство стационарных решений типа shock-like \cite{KMV}
@@ -62,7 +64,7 @@ $y = \Lambda(u - U) : H \to H$ \textit{такой, что} $\mathbf{supp} \ y (\
     U(x) = -2\tau\tanh{(\tau(x - \frac{1}{2}))}, \ \text{где } \tau \ge 0.
 \end{equation}
 
-\begin{figure}[H]
+\begin{figure}
     \centering
     \includegraphics[width=4in]{fig1}
     \caption{$U(x)$ при разных $\tau$}
@@ -99,7 +101,7 @@ $x = \frac{1}{2}$ (Рис 2.), т.е. положительность этого 
 неустойчивости системы.
 
 
-\begin{figure}[H]
+\begin{figure}
     \centering
     \includegraphics[width=4in]{fig2}
     \caption{График $\mu$ в \eqref{transf_linear}}
