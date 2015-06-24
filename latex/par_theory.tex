@@ -130,14 +130,14 @@ $\varphi$. Учтем, что
 \begin{proof}
     % Пусть $D$ - оператор дифференцирования. Он является линейным отображением(преобразованием) $\mathbb{R}^m$ в $\mathbb{R}^m$. Рассмотрим следующее равенство :\\
     Cистема $\left\{ w_j|_{\omega} \right\}^m_1$ линейно независима, если 
-    тождество ввида
+    тождество вида
     
     \begin{equation}\label{sum_func}
         \sum \limits_{j = 1}^m{c_j w_j(x)} = 0, \ x \in \omega.
     \end{equation}
     выполняется только при $c_1 = c_2 = ... = c_m = 0.$\\
 
-    Пусть $D$ оператор дифференцирования, действующий в пространстве бесконечно 
+    Пусть $D$ - оператор дифференцирования, действующий в пространстве бесконечно 
     дифференцируемых функций.
     Заметим, что $D^2 w_j = -(\pi k)^2 w_j$. Подействуем  на \eqref{sum_func} 
     оператором $D^{2l}$ раз
@@ -162,7 +162,7 @@ $\varphi$. Учтем, что
 
     Функция $w_m(x) = \sin{(\pi m x)}$ не может принимать нулевые значения на 
     целом интервале, следовательно $c_m = 0$. Проделав те же самые рассуждения 
-    для $\sum \limits_{j = 1}^{m - 1}{c_j w_j(x)}$, получаем что
+    для $\sum \limits_{j = 1}^{m - 1}{c_j w_j(x)}$, получаем, что
 
     \begin{equation*}
         c_1 = c_2 = ... = c_m = 0.
@@ -189,7 +189,7 @@ $\varphi$. Учтем, что
        f(c_1, c_2, ..., c_m) = \int \limits_{\omega} {(\sum\limits_1^m {c_jw_j})^2}
        \text{, где } c_1^2 + c_2^2 + ... + c^2_m = 1.
     \end{equation}
-    По теореме Вейштрасса, существует функция 
+    По теореме Вейерштрасса, существует функция 
     $z_0 = \sum\limits_1^m {c_j^0 w_j} \in H_m$, такая, что
 
     \begin{equation}
@@ -217,15 +217,15 @@ $\varphi$. Учтем, что
     \norm{\varphi}^2 \le 0.
 \end{equation*}
 
-Далее, выберем число $r = r_m > 0$ так, чтобы
+Далее выберем число $r = r_m > 0$ так, чтобы
 $\beta = \pi^2 - \alpha + r\gamma > 0$.
-Умножим обе части неравенства на $2e^{2\beta t}$, интегрируем по $t$ и 
-получаем следующую важную оценку
+Умножим обе части неравенства на $2e^{2\beta t}$, проинтегрируем по $t$ и 
+получим следующую важную оценку
 
 \begin{equation}\label{phi_mark}
     \norm{\varphi}^2 \le \norm{\varphi_0}^2 e^{-2\beta t},
 \end{equation}
-здесь $\varphi_0 = P_m u_0$
+здесь $\varphi_0 = P_m u_0$.
 \vspace{2em}
 
 Проведём аналогичные выкладки с $\psi = Q_m u$. Домножим обе части 
@@ -263,12 +263,12 @@ $\beta = \pi^2 - \alpha + r\gamma > 0$.
 \begin{equation*}
     \frac{1}{2} \frac{d}{dt} \norm{\psi}^2 + (\pi(m + 1))^2 \norm{\psi}^2 - 
     \alpha \norm{\psi}^2 \le r (\frac{\varepsilon \norm{\psi}^2}{2} + 
-    \frac{\norm{\varphi}^2}{2 \varepsilon}).
+    \frac{\norm{\varphi}^2}{2 \varepsilon}),
 \end{equation*}
 \begin{equation*}
     \frac{1}{2} \frac{d}{dt} \norm{\psi}^2  + [(\pi(m + 1))^2 - \alpha - 1] 
     \norm{\psi}^2 \le \frac{r^2}{4}\norm{\varphi}^2 \le 
-    \frac{r^2}{4}\norm{\varphi_0}^2 e^{-2\beta t}.
+    \frac{r^2}{4}\norm{\varphi_0}^2 e^{-2\beta t},
 \end{equation*}
 \begin{equation}
     \frac{1}{2} \frac{d}{dt} \norm{\psi}^2 + q\norm{\psi}^2 \le 
@@ -280,12 +280,12 @@ $\beta = \pi^2 - \alpha + r\gamma > 0$.
 \begin{gather*}
     \int\limits_0^t{d(e^{2q\tau}} \norm{\psi}^2) \le 
     \frac{r^2}{2} \norm{\varphi_0}^2 \frac{1}{2q - 2\beta} 
-    \int\limits_0^t {e^{(2q -2\beta) \tau} d[(2q -2\beta) \tau]}\\*
+    \int\limits_0^t {e^{(2q -2\beta) \tau} d[(2q -2\beta) \tau]},\\*
     e^{2qt} \norm{\psi}^2 - \norm{\psi_0}^2 \le \frac{r^2}{2}
     \norm{\varphi_0}^2 \frac{1}{2q - 2\beta} e^{(2q -2\beta)t}.
 \end{gather*}
 
-Следовательно
+Следовательно, 
 
 \begin{equation}\label{psi_mark}
     \norm{\psi}^2 \le \norm{\psi_0}^2 e^{-2qt} + \frac{r^2}{2} 
@@ -298,12 +298,12 @@ $\varphi$ [\eqref{psi_mark}, \eqref{phi_mark}] и получим
 \begin{gather*}
     \norm{u}^2 = \norm{\varphi}^2 + \norm{\psi}^2 \le \norm{\varphi_0}^2 
     e^{-2\beta t} + \norm{\psi_0}^2 e^{-2qt} + \frac{r^2}{2} \norm{\varphi_0}^2 
-    \frac{1}{2(q - \beta)} e^{-2\beta t}
+    \frac{1}{2(q - \beta)} e^{-2\beta t}.
 \end{gather*}
 
-Окончально, оценку стабилизации можно записать в виде
+Окончально оценку стабилизации можно записать в виде
 
 \begin{equation}
     \norm{u}^2 \le \norm{u_0}^2 \left( e^{-2\beta t} + e^{-2qt} + 
-    \frac{r^2 e^{-2\beta t}}{4(q - \beta)} \right)
+    \frac{r^2 e^{-2\beta t}}{4(q - \beta)} \right).
 \end{equation}
