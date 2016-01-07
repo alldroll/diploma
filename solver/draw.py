@@ -34,8 +34,8 @@ def draw_subplots(name, x, fn, labels):
   for f in fn:
     ax = fig.add_subplot(111)
     ax.plot(x, f, label=r'' + next(i))
-    ax.set_xlabel(r'$r$')
-    ax.set_ylabel(r'$\theta$')
+    ax.set_xlabel(r'$x$', fontsize=18)
+    ax.set_ylabel(r'$\mu$', fontsize=18, rotation=0)
 
   plt.legend(loc='upper right')
 
